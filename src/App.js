@@ -5,7 +5,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-     <h1>skeleton structure</h1>
+     <h1>skeleton structure / in development</h1>
     </div>
   );
 }
