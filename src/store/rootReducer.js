@@ -1,3 +1,6 @@
 import { combineReducers } from "redux";
+import homepage from "./homepage/reducer";
 
-export default combineReducers({});
+export default combineReducers({
+  homepage,
+});

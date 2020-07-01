@@ -1,33 +1,46 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchCountries } from "../store/homepage/Actions";
+import { selectAllCountryInfo } from "../store/homepage/selectors";
 
 export default function Homepage() {
   const dispatch = useDispatch();
+  const countryAndPostData = useSelector(selectAllCountryInfo);
 
-  const id = 1;
+  function renderData() {
+    console.log("Have data?", countryAndPostData);
+    if (!countryAndPostData) {
+      console.log("no data");
+      return <h2>Loading...</h2>;
+    } else {
+      console.log("have data!");
+      return (
+        <div>
+          <p>Hello</p>
+          {countryAndPostData.map((item) => {
+            return (
+              <li key={item.id}>
+                <Link to={`/locations/${item.id}/posts`}>
+                  <button> {item.name}</button>
+                </Link>
+              </li>
+            );
+          })}
+        </div>
+      );
+    }
+  }
 
   useEffect(() => {
-    dispatch(fetchCountries(id));
+    dispatch(fetchCountries());
   }, []);
   return (
     <div>
       I AM THE HOMEPAGE
-      <h1>What are you exploring next?</h1>
       <div>
-        <Link to={`/locations/${"1"}/posts`}>
-          <button>Thailand</button>
-        </Link>
-        <Link to={`/locations/${"2"}/posts`}>
-          <button>Indonesia</button>
-        </Link>
-        <Link to={`/locations/${"3"}/posts`}>
-          <button>Vietnam</button>
-        </Link>
-        <Link to={`/locations/${"4"}/posts`}>
-          <button>Singapore</button>
-        </Link>
+        <h2>Some info</h2>
+        {renderData()}
       </div>
     </div>
   );

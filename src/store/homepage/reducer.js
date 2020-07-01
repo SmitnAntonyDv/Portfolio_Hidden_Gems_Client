@@ -1,11 +1,10 @@
-const initialState = {
-  name: null,
-};
+const initialState = [];
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    // case typeName:
-    //     return { ...state, ...payload }
+    case "FETCHED_COUNTRY_POSTS_DATA_SUCCESSFULL":
+      console.log("MY PAYLOAD", payload);
+      return [...payload];
 
     default:
       return state;
