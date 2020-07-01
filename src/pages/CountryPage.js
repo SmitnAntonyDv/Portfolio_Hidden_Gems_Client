@@ -1,15 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCountryPosts } from "../store/countrypage/actions";
-import { fetchCountryInfo } from "../store/countrypage/countryAPI/actions";
+
 import { selectSpecificCountryInfo } from "../store/countrypage/selectors";
+
+import CountryAPIcard from "../components/CountryAPIcard";
 
 export default function CountryPage() {
   const dispatch = useDispatch();
   const countryInfo = useSelector(selectSpecificCountryInfo);
+
   const { countryId } = useParams();
-  // console.log("what my params?", countryId);
 
   function renderCountryPost() {
     if (!countryInfo) {
@@ -48,10 +50,16 @@ export default function CountryPage() {
       );
     }
   }
-
-  function renderCountryData() {
-    if (countryInfo) {
-      dispatch(fetchCountryInfo(countryInfo.name));
+  function renderCountryInfo() {
+    if (!countryInfo.name) {
+      // console.log("No info yet chief");
+      return <h2>Loading Country info . . .</h2>;
+    } else {
+      return (
+        <div>
+          <CountryAPIcard name={countryInfo.name} />
+        </div>
+      );
     }
   }
 
@@ -59,7 +67,6 @@ export default function CountryPage() {
     dispatch(fetchCountryPosts(countryId));
   }, []);
 
-  console.log("name of the country?", countryInfo.name);
   return (
     <div>
       <p>COUNTRY PAGE</p>
@@ -71,7 +78,7 @@ export default function CountryPage() {
         <li>finished</li>
       </ul>
       {renderCountryPost()}
-      {renderCountryData()}
+      {renderCountryInfo()}
     </div>
   );
 }
