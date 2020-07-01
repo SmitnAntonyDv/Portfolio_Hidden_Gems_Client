@@ -11,7 +11,7 @@ function infoFetched(data) {
 
 export function fetchCountryRelatedData(countryId) {
   return async function thunk(dispatch, getState) {
-    console.log("working?");
+    // console.log("working?");
     try {
       const res = await Axios.get(`${url}/locations/${countryId}/posts`);
       //   console.log("correct data?", res.data);

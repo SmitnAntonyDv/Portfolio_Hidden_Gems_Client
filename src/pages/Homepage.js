@@ -7,7 +7,6 @@ import { selectAllCountryInfo } from "../store/homepage/selectors";
 export default function Homepage() {
   const dispatch = useDispatch();
   const countryAndPostData = useSelector(selectAllCountryInfo);
-
   function renderData() {
     if (!countryAndPostData) {
       // console.log("no data");
@@ -16,7 +15,6 @@ export default function Homepage() {
       // console.log("have data!");
       return (
         <div>
-          <p>Hello</p>
           {countryAndPostData.map((item) => {
             return (
               <li key={item.id}>
