@@ -9,7 +9,7 @@ function infoFetched(data) {
   };
 }
 
-export function fetchCountryRelatedData(countryId) {
+export function fetchCountryPosts(countryId) {
   return async function thunk(dispatch, getState) {
     // console.log("working?");
     try {
@@ -19,5 +19,12 @@ export function fetchCountryRelatedData(countryId) {
     } catch (e) {
       console.log("ERROR MESSAGE", e);
     }
+  };
+}
+
+export function fetchCountryInfo(countryName) {
+  return async function thunk(dispatch, getState) {
+    console.log("HELLO I AM ALIVE!");
+    console.log("correct data?", countryName);
   };
 }
