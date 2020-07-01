@@ -9,11 +9,10 @@ export function dataSuccesfullyFetched(data) {
 }
 
 export function fetchCountries(id) {
-  console.log(url);
   return async function thunk(dispatch, getState) {
     try {
       const res = await Axios.get(`${url}/locations`);
-      console.log("correct data?", res.data);
+      // console.log("correct data?", res.data);
       dispatch(dataSuccesfullyFetched(res.data));
     } catch (e) {
       console.log("error message:", e);

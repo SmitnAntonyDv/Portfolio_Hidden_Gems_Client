@@ -9,12 +9,11 @@ export default function Homepage() {
   const countryAndPostData = useSelector(selectAllCountryInfo);
 
   function renderData() {
-    console.log("Have data?", countryAndPostData);
     if (!countryAndPostData) {
-      console.log("no data");
+      // console.log("no data");
       return <h2>Loading...</h2>;
     } else {
-      console.log("have data!");
+      // console.log("have data!");
       return (
         <div>
           <p>Hello</p>
