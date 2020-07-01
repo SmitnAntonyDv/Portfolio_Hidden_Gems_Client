@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchCountryPosts,
-  fetchCountryInfo,
-} from "../store/countrypage/actions";
+import { fetchCountryPosts } from "../store/countrypage/actions";
+import { fetchCountryInfo } from "../store/countrypage/countryAPI/actions";
 import { selectSpecificCountryInfo } from "../store/countrypage/selectors";
 
 export default function CountryPage() {
-  const [countryName, setCountryName] = useState("");
   const dispatch = useDispatch();
   const countryInfo = useSelector(selectSpecificCountryInfo);
   const { countryId } = useParams();
@@ -16,7 +13,7 @@ export default function CountryPage() {
 
   function renderCountryPost() {
     if (!countryInfo) {
-      console.log("no data yet chief!");
+      // console.log("no data yet chief!");
       return <h2>Loading posts chief! . . . </h2>;
     } else {
       return (
@@ -31,7 +28,7 @@ export default function CountryPage() {
               <li key={post.id}>
                 <h2>{post.title}</h2>
                 <p>{post.description}</p>
-                <img src={post.imageUrl} />
+                <img src={post.imageUrl} alt='' />
                 <p>location :{post.adress}</p>
                 <h2>TODO: LINK LAT / LONG VALUES to geocoding google API</h2>
                 <p>
@@ -53,7 +50,9 @@ export default function CountryPage() {
   }
 
   function renderCountryData() {
-    dispatch(fetchCountryInfo(countryInfo.name));
+    if (countryInfo) {
+      dispatch(fetchCountryInfo(countryInfo.name));
+    }
   }
 
   useEffect(() => {
