@@ -1,14 +1,15 @@
 import Axios from "axios";
 import { url } from "../../config/constants";
-export const GotCountryData = "GOT_COUNTRY_SPECIFIC_DATA_SUCCESS";
+export const GotCountryPosts = "GOT_COUNTRY_SPECIFIC_DATA_SUCCESS";
 
 function infoFetched(data) {
   return {
-    type: GotCountryData,
+    type: GotCountryPosts,
     payload: data,
   };
 }
 
+//thunk functions
 export function fetchCountryPosts(countryId) {
   return async function thunk(dispatch, getState) {
     // console.log("working?");
@@ -19,12 +20,5 @@ export function fetchCountryPosts(countryId) {
     } catch (e) {
       console.log("ERROR MESSAGE", e);
     }
-  };
-}
-
-export function fetchCountryInfo(countryName) {
-  return async function thunk(dispatch, getState) {
-    console.log("HELLO I AM ALIVE!");
-    console.log("correct data?", countryName);
   };
 }

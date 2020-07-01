@@ -1,4 +1,4 @@
-import { GotCountryData } from "./actions";
+import { GotCountryPosts } from "./actions";
 
 const initialState = {
   id: null,
@@ -8,7 +8,7 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case GotCountryData:
+    case GotCountryPosts:
       // console.log("what is my payload?", payload);
       return { ...payload };
 
