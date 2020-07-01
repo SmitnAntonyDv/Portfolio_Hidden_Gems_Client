@@ -32,7 +32,10 @@ export default function CountryPage() {
                 <p>{post.description}</p>
                 <img src={post.imageUrl} alt='' />
                 <p>location :{post.adress}</p>
-                <h2>TODO: LINK LAT / LONG VALUES to geocoding google API</h2>
+                <h2>
+                  TODO: LINK LAT / LONG VALUES to geocoding google API
+                  (according to googleAPI)
+                </h2>
                 <p>
                   latitude: {post.latitude},
                   <br />
@@ -42,7 +45,6 @@ export default function CountryPage() {
                 <Link to={`/locations/${post.userId}/details`}>
                   <button>Explore this location!</button>
                 </Link>
-                <h2>TODO: GOOGLE MAP!</h2>
               </li>
             );
           })}
@@ -72,10 +74,7 @@ export default function CountryPage() {
       <p>COUNTRY PAGE</p>
       <p>To do:</p>
       <ul>
-        <li>Import country specific API data</li>
-        <li>display some basic country specific data at buttom</li>
         <li>style page according to wireframe</li>
-        <li>finished</li>
       </ul>
       {renderCountryPost()}
       {renderCountryInfo()}

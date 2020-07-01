@@ -1,16 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
-import { Switch, Route } from 'react-router-dom';
-import Other from './pages/Other';
-import Homepage from './pages/Homepage';
-import CountryPage from './pages/CountryPage';
-import DashboardPage from './pages/DashboardPage';
-import DetailsPage from './pages/DetailsPage';
+import { Switch, Route } from "react-router-dom";
+import Other from "./pages/Other";
+import Homepage from "./pages/Homepage";
+import CountryPage from "./pages/CountryPage";
+import DashboardPage from "./pages/DashboardPage";
+import DetailsPage from "./pages/DetailsPage";
+import Toolbar from "./components/navbar/Toolbar";
 function App() {
   return (
     <div className='App'>
+      <Toolbar />
       <Switch>
         <Route exact path='/' component={Homepage} />
         <Route path='/testing' component={Other} />
