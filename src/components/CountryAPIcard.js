@@ -12,7 +12,7 @@ export default function CountryAPIcard(props) {
     dispatch(fetchCountryInfo(name));
   }, [name]);
 
-  console.log("CORRECT INFO?", info);
+  // console.log("CORRECT INFO?", info);
   return (
     <div>
       <h2>Hello I am the countryAPIcard</h2>
