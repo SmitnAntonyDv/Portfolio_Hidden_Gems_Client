@@ -25,7 +25,7 @@ export default function CountryAPIcard(props) {
             {info.name} is located in {info.subregion}
           </p>
           <p>
-            The timezones in {info.name} are: {info.timezones}
+            {info.name} has the timezone(s): {info.timezones}
           </p>
           <p>Their national callingCode is: +{info.callingCodes}</p>
         </span>
