@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
 import { Switch, Route } from "react-router-dom";
@@ -10,6 +9,7 @@ import DashboardPage from "./pages/DashboardPage";
 import DetailsPage from "./pages/DetailsPage";
 import Toolbar from "./components/navbar/Toolbar";
 import Footer from "./components/footer/Footer";
+
 function App() {
   return (
     <div className='App'>
