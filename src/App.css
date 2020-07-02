@@ -18,6 +18,9 @@ li {
   color: white !important;
   border-color: white !important;
 }
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark {
+  background-color: #7e783a !important;
+}
 
 /* Styling the Homepage Herobanner */
 .heroBanner {
@@ -42,12 +45,11 @@ li {
 }
 
 /* styling homebuttons */
-.homepageButtonWrapper {
-  text-align: center;
-  font-size: 2vh;
-}
+
 .homePageButtons {
   width: 40%;
   padding: 2vh;
+  background-color: #f7e4a1 !important;
+  color: black !important;
   /* margin: 1.2vh; */
 }
