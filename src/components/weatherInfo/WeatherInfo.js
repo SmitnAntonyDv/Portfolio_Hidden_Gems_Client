@@ -27,7 +27,7 @@ export default function WeatherInfo(props) {
               Local Temperature feels like{" "}
               {(main.feels_like - convert).toFixed(1)} degrees
             </p>
-            <p>Local humidity is: {main.humidity}</p>
+            <p>Local humidity is: {main.humidity}%</p>
             <div> local Weather description: {weather[0].description}</div>
             <p>TODO: display sunrise / sunset times with moment.js</p>
           </h2>
