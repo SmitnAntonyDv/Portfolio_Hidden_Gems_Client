@@ -3,6 +3,8 @@ import { Link, useHistory, useParams, matchPath } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectSpecificCountryInfo } from "../../store/countrypage/selectors";
 import { selectCountryInfo } from "../../store/countrypage/countryAPI/selector";
+import "../../App.css";
+import { Button, Navbar, Nav, NavDropdown } from "react-bootstrap";
 
 export default function Toolbar() {
   const country = useSelector(selectSpecificCountryInfo);
@@ -25,11 +27,7 @@ export default function Toolbar() {
 
   function renderCountryButton() {
     if (history.location.pathname === `/locations/${country.id}/posts`) {
-      return (
-        <Link to={"/"}>
-          <button>Explore other Countries</button>
-        </Link>
-      );
+      return <Nav.Link href='/'>Explore other Countries</Nav.Link>;
     } else if (history.location.pathname === `/locations/${userID}/details`) {
       return (
         <Link to={`/locations/${country.id}/posts`}>
@@ -42,19 +40,22 @@ export default function Toolbar() {
   }
 
   return (
-    <div>
-      <div>
-        <div>
-          <button>menu toggle</button>
-        </div>
-        <div>
-          {renderCountryButton()}
-          <p>Todo: change button for other detailpage</p>
-        </div>
-        <div>
-          <div>LOGO</div>
-        </div>
-      </div>
-    </div>
+    <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
+      <Navbar.Brand href='/'>Explore Hidden Gems</Navbar.Brand>
+      <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+      <Navbar.Collapse id='responsive-navbar-nav'>
+        <Nav className='mr-auto'>
+          <Nav.Link href='/locations/:countryId/posts'>
+            {renderCountryButton()}
+          </Nav.Link>
+        </Nav>
+        <Nav>
+          <Nav.Link href='#deets'>Login</Nav.Link>
+          <Nav.Link eventKey={2} href='#memes'>
+            Logout
+          </Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 }
