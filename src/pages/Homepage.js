@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCountries } from "../store/homepage/Actions";
 import { selectAllCountryInfo } from "../store/homepage/selectors";
-import { Button } from "react-bootstrap";
+import { Button, Container, Col, Row } from "react-bootstrap";
 
 export default function Homepage() {
   const dispatch = useDispatch();
@@ -15,22 +15,25 @@ export default function Homepage() {
     } else {
       // console.log("have data!");
       return (
-        <div>
+        <>
           {countryAndPostData.map((item) => {
             return (
-              <li key={item.id}>
-                <Link to={`/locations/${item.id}/posts`}>
-                  <button> {item.name}</button>
-                  <>
-                    <Button variant='primary' size='lg' block>
+              <Row>
+                <Col className='m-3' key={item.id}>
+                  <Link to={`/locations/${item.id}/posts`}>
+                    <Button
+                      className='homePageButtons'
+                      variant='primary'
+                      size='lg'
+                    >
                       {item.name}
                     </Button>
-                  </>
-                </Link>
-              </li>
+                  </Link>
+                </Col>
+              </Row>
             );
           })}
-        </div>
+        </>
       );
     }
   }
@@ -43,9 +46,11 @@ export default function Homepage() {
       <div className='heroBanner'>
         <h1 className='hero-text'>What will you explore next?</h1>
       </div>
-      <span className='homepageButtonWrapper'>
-        <div className='homepageButton'>{renderData()}</div>
-      </span>
+      <Container>
+        <span className='homepageButtonWrapper'>
+          <div className='homepageButton'>{renderData()}</div>
+        </span>
+      </Container>
     </div>
   );
 }
