@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FetchPost } from "../store/detailpage/actions";
 import { selectPost } from "../store/detailpage/selectors";
+import WeatherInfo from "../components/weatherInfo/WeatherInfo";
 
 export default function DetailsPage() {
   const postData = useSelector(selectPost);
@@ -26,6 +27,8 @@ export default function DetailsPage() {
       <h2>{title}</h2>
       <img src={imageUrl} alt='' />
       <p>{description}</p>
+      <p>{adress}</p>
+      <WeatherInfo latitude={latitude} longitude={longitude} />
     </div>
   );
 }
