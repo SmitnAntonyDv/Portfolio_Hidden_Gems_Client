@@ -42,7 +42,7 @@ export default function CountryPage() {
                   longitude: {post.longitude}
                 </p>
                 lat:
-                <Link to={`/locations/${post.userId}/details`}>
+                <Link to={`/locations/${post.id}/details`}>
                   <button>Explore this location!</button>
                 </Link>
               </li>

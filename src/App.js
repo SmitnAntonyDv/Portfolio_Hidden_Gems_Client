@@ -22,7 +22,7 @@ function App() {
           path='/locations/:countryId/posts'
           component={CountryPage}
         />
-        <Route path='/locations/:userId/details' component={DetailsPage} />
+        <Route path='/locations/:postId/details' component={DetailsPage} />
         <Route path='/user/:userId/dashboard' component={DashboardPage} />
       </Switch>
       <Footer />
