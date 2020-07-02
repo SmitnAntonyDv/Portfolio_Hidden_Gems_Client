@@ -10,9 +10,9 @@ export default function Toolbar() {
   const country = useSelector(selectSpecificCountryInfo);
   const history = useHistory();
   const { userId } = useParams();
-  console.log("Which Country BISH?", country.id);
-  console.log("WHAT MA HISTORY BISH", history.location.pathname);
-  console.log("Who am I ? ", userId);
+  // console.log("Which Country BISH?", country.id);
+  // console.log("WHAT MA HISTORY BISH", history.location.pathname);
+  // console.log("Who am I ? ", userId);
 
   const match = matchPath(history.location.pathname, {
     path: `/locations/:userId/details`,
