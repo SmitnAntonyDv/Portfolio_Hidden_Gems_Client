@@ -9,7 +9,6 @@ export function postFetchSuccess(data) {
     payload: data,
   };
 }
-
 export function FetchPost(postId) {
   return async function thunk(dispatch, getState) {
     // console.log("working?");

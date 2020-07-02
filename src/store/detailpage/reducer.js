@@ -13,7 +13,6 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case FetchedPost:
-      console.log("WHAT IS MY PAYLOAD", payload);
       return { ...payload };
 
     default:
