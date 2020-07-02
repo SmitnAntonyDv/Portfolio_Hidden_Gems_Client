@@ -1,5 +1,5 @@
 import Axios from "axios";
-const weatherFetchSuccess = "FETCH_WEATHER_SUCCESS";
+export const weatherFetchSuccess = "FETCH_WEATHER_SUCCESS";
 
 export function WeatherFetchSucces(data) {
   return {
@@ -15,8 +15,8 @@ export function FetchWeather(latitude, longitude) {
       const res = await Axios.get(
         `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=5dc4f703df7541395af93b0beab81835`
       );
-
       console.log("WHAT BE THE RESPONSE CHIEF?", res.data);
+      dispatch(WeatherFetchSucces(res.data));
     } catch (e) {
       console.log("ERROR MESSAGE", e);
     }
