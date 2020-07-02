@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCountries } from "../store/homepage/Actions";
 import { selectAllCountryInfo } from "../store/homepage/selectors";
+import { Button } from "react-bootstrap";
 
 export default function Homepage() {
   const dispatch = useDispatch();
@@ -20,6 +21,11 @@ export default function Homepage() {
               <li key={item.id}>
                 <Link to={`/locations/${item.id}/posts`}>
                   <button> {item.name}</button>
+                  <>
+                    <Button variant='primary' size='lg' block>
+                      {item.name}
+                    </Button>
+                  </>
                 </Link>
               </li>
             );
@@ -34,11 +40,12 @@ export default function Homepage() {
   }, []);
   return (
     <div>
-      I AM THE HOMEPAGE
-      <div>
-        <h2>Some info</h2>
-        {renderData()}
+      <div className='heroBanner'>
+        <h1 className='hero-text'>What will you explore next?</h1>
       </div>
+      <span className='homepageButtonWrapper'>
+        <div className='homepageButton'>{renderData()}</div>
+      </span>
     </div>
   );
 }

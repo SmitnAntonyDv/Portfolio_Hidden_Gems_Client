@@ -1,3 +1,42 @@
 .App {
   text-align: center;
 }
+
+/* styling the boostrap navbar */
+.navbar-dark .navbar-nav .nav-link {
+  color: white !important;
+}
+.navbar-dark .navbar-toggler-icon {
+  color: white !important;
+}
+.navbar-dark .navbar-toggler {
+  color: white !important;
+  border-color: white !important;
+}
+
+/* Styling the Homepage Herobanner */
+.heroBanner {
+  width: 100%;
+  height: 38vh;
+  background-image: url("https://images.pexels.com/photos/3145154/pexels-photo-3145154.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-position: center center;
+  background-size: cover;
+}
+
+.hero-text {
+  text-align: center;
+  position: relative;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4vh;
+}
+
+/* hiding LI bullets */
+li {
+  list-style: none;
+}
