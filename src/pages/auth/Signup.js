@@ -30,6 +30,11 @@ export default function Signup() {
     setName("");
   }
 
+  useEffect(() => {
+    if (token !== null) {
+      history.push("/");
+    }
+  }, [token, history]);
   return (
     <Container>
       <Form as={Col} md={{ span: 6, offset: 3 }} className='mt-5'>
