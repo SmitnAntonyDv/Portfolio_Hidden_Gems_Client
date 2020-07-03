@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
+import { logingIn } from "../../store/user/actions";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -20,11 +21,12 @@ export default function Login() {
   // }, [token, history]);
 
   function submitForm(event) {
-    console.log("Hello");
+    // console.log("Hello");
     event.preventDefault();
 
     console.log(email);
     console.log(password);
+    dispatch(logingIn(email, password));
   }
   return (
     <Container>
