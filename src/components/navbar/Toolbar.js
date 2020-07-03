@@ -3,13 +3,17 @@ import { Link, useHistory, useParams, matchPath } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectSpecificCountryInfo } from "../../store/countrypage/selectors";
 import { selectCountryInfo } from "../../store/countrypage/countryAPI/selector";
+import { selectToken } from "../../store/user/selector";
 import "../../App.css";
 import { Button, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import LoggedIn from "./LoggedIn";
+import LoggedOut from "./loggedOut";
 
 export default function Toolbar() {
   const country = useSelector(selectSpecificCountryInfo);
   const history = useHistory();
   const { userId } = useParams();
+  const token = useSelector(selectToken);
   // console.log("Which Country BISH?", country.id);
   // console.log("WHAT MA HISTORY BISH", history.location.pathname);
   // console.log("Who am I ? ", userId);
@@ -24,6 +28,8 @@ export default function Toolbar() {
       return match.params.userId;
     }
   }
+
+  const loginControls = token ? <LoggedIn /> : <LoggedOut />;
 
   function renderCountryButton() {
     if (history.location.pathname === `/locations/${country.id}/posts`) {
@@ -50,9 +56,9 @@ export default function Toolbar() {
           </Nav.Link>
         </Nav>
         <Nav>
-          <Nav.Link href='#deets'>Login</Nav.Link>
+          {loginControls}
           <Nav.Link eventKey={2} href='#memes'>
-            Logout
+            Something
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
