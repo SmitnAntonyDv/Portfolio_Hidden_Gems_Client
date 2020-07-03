@@ -10,6 +10,7 @@ import DetailsPage from "./pages/DetailsPage";
 import Toolbar from "./components/navbar/Toolbar";
 import Footer from "./components/footer/Footer";
 import Login from "./pages/auth/Login";
+import Signup from "./pages/auth/Signup";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path='/locations/:postId/details' component={DetailsPage} />
         <Route path='/user/:userId/dashboard' component={DashboardPage} />
         <Route path='/login' component={Login} />
+        <Route path='/signup' component={Signup} />
       </Switch>
       <Footer />
     </div>
