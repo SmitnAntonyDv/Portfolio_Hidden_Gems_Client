@@ -21,6 +21,10 @@ li {
 nav.navbar.navbar-expand-lg.navbar-dark.bg-dark {
   background-color: #7e783a !important;
 }
+button.btn.btn-primary {
+  background-color: #7e783a;
+  border-color: #7e783a;
+}
 
 /* Styling the Homepage Herobanner */
 .heroBanner {
