@@ -22,6 +22,9 @@ export default function Login() {
   function submitForm(event) {
     console.log("Hello");
     event.preventDefault();
+
+    console.log(email);
+    console.log(password);
   }
   return (
     <Container>
