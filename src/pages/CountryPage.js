@@ -69,7 +69,7 @@ export default function CountryPage() {
     }
   }
 
-  //haversine forumla function
+  // haversine forumla function
   function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
     //lat1&lon1 is location of user whereas lat2&lon2 is location from suggested spot
     const R = 6371; // Radius of the earth in km
@@ -90,22 +90,65 @@ export default function CountryPage() {
     return deg * (Math.PI / 180);
   }
 
+  //hardcoded UserLocation (Bali Denspar)
+  const userLocation = { lat: -8.65629, lon: 115.222099 };
+
   function sortPostsByDistance() {
     if (countryInfo) {
-      console.log("ORIGINAL INFO", countryInfo);
-      const lati = countryInfo.locationposts.map((loc) => {
+      // console.log("ORIGINAL INFO", countryInfo);
+      const lat = countryInfo.locationposts.map((loc) => {
         return loc.latitude;
       });
-      const long = countryInfo.locationposts.map((loc) => {
+      const lon = countryInfo.locationposts.map((loc) => {
         return loc.longitude;
       });
-      console.log("LATITUDE", lati);
-      console.log("LONGITUTDE", long);
 
-      function closestLocation(postLocation, userLocation) {
-        // getDistanceFromLatLonInKm()
-        console.log("I AM LOADING!");
-      }
+      // calculating distance between locations and user.
+      console.log("USERLAT", userLocation.lat);
+      console.log("USERLON", userLocation.lon);
+      console.log("LOCATIONLAT", lat[2]);
+      console.log("LOCATIONLON", lon[2]);
+      console.log(
+        "EUREKA?",
+        getDistanceFromLatLonInKm(
+          userLocation.lat,
+          userLocation.lon,
+          lat[2],
+          lon[2]
+        )
+      );
+
+      // function closestLocation(postLocation, userLocation) {
+      //   console.log("What is my userLocation?", userLocation.lat); //?? it works though?
+      //   console.log("what is my postLocation", postLocation);
+
+      //   //calculating distance from user to post1
+      //   //formula format
+      //   //getDistanceFromLatoLonInKM(lat1, lon1, lat2, lon2)
+      //   const sortDistance = (post1, post2) => {
+      //     console.log("HELLLOOOO", userLocation.lat);
+      //     const distance1 = getDistanceFromLatLonInKm(
+      //       userLocation.lat,
+      //       userLocation.lon,
+      //       post1.lat,
+      //       post1.lon
+      //     );
+      //     //calculating distance from user to post2
+      //     const distance2 = getDistanceFromLatLonInKm(
+      //       userLocation.lat,
+      //       userLocation.lon,
+      //       post2.lat,
+      //       post2.lon
+      //     );
+      //     //compare both distances.
+      //     return distance1 - distance2;
+      //   };
+      //   let result = postLocation.sort(sortDistance);
+      //   console.log("WHAT MA RESULT", result);
+      //   return result;
+      // }
+
+      // closestLocation(postLocation, userLocation);
     }
   }
 
