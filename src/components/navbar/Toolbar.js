@@ -50,7 +50,7 @@ export default function Toolbar() {
           </Nav.Link>
         </Nav>
         <Nav>
-          <Nav.Link href='#deets'>Login</Nav.Link>
+          <Nav.Link href='/login'>Login</Nav.Link>
           <Nav.Link eventKey={2} href='#memes'>
             Logout
           </Nav.Link>
