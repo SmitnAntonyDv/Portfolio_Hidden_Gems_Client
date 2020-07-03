@@ -16,10 +16,36 @@ import {
 } from "react-bootstrap";
 
 export default function CountryPage() {
+  const [distanceToLocation, setDistanceToLocation] = useState();
   const dispatch = useDispatch();
   const countryInfo = useSelector(selectSpecificCountryInfo);
 
   const { countryId } = useParams();
+
+  // haversine forumla function
+  function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+    //lat1&lon1 is location of user whereas lat2&lon2 is location from suggested spot
+    const R = 6371; // Radius of the earth in km
+    const dLat = deg2rad(lat2 - lat1); // deg2rad below
+    const dLon = deg2rad(lon2 - lon1);
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(deg2rad(lat1)) *
+        Math.cos(deg2rad(lat2)) *
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const d = R * c; // Distance in km
+    // setDistanceToLocation(d);
+    return d;
+  }
+
+  //hardcoded UserLocation (Bali Denspar)
+  const userLocation = { lat: -8.65629, lon: 115.222099 };
+
+  function cardSorter() {
+    console.log("hello");
+  }
 
   function renderCountryPost() {
     if (!countryInfo) {
@@ -32,7 +58,7 @@ export default function CountryPage() {
             <div>
               <button>Most liked</button>
               <button>Most Recent</button>
-              <button>closest to your location</button>
+              <button onClick={cardSorter}>closest to your location</button>
             </div>
 
             <CardGroup style={{ flexDirection: "column" }}>
@@ -45,8 +71,14 @@ export default function CountryPage() {
                       <Card.Img size='lg' src={post.imageUrl} alt='' />
                       <Card.Text>location :{post.adress}</Card.Text>
                       <h2>
-                        TODO: LINK LAT / LONG VALUES to geocoding google API
-                        (according to googleAPI)
+                        THE DISTANCE BETWEEN YOU AND THIS LOCATION IS:{" "}
+                        {getDistanceFromLatLonInKm(
+                          userLocation.lat,
+                          userLocation.lon,
+                          post.latitude,
+                          post.longitude
+                        ).toFixed(2)}{" "}
+                        km
                       </h2>
                       <p>
                         latitude: {post.latitude},
@@ -69,29 +101,9 @@ export default function CountryPage() {
     }
   }
 
-  // haversine forumla function
-  function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
-    //lat1&lon1 is location of user whereas lat2&lon2 is location from suggested spot
-    const R = 6371; // Radius of the earth in km
-    const dLat = deg2rad(lat2 - lat1); // deg2rad below
-    const dLon = deg2rad(lon2 - lon1);
-    const a =
-      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.cos(deg2rad(lat1)) *
-        Math.cos(deg2rad(lat2)) *
-        Math.sin(dLon / 2) *
-        Math.sin(dLon / 2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    const d = R * c; // Distance in km
-    return d;
-  }
-
   function deg2rad(deg) {
     return deg * (Math.PI / 180);
   }
-
-  //hardcoded UserLocation (Bali Denspar)
-  const userLocation = { lat: -8.65629, lon: 115.222099 };
 
   function sortPostsByDistance() {
     if (countryInfo) {
