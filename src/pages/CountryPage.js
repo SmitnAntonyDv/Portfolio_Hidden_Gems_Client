@@ -69,6 +69,46 @@ export default function CountryPage() {
     }
   }
 
+  //haversine forumla function
+  function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+    //lat1&lon1 is location of user whereas lat2&lon2 is location from suggested spot
+    const R = 6371; // Radius of the earth in km
+    const dLat = deg2rad(lat2 - lat1); // deg2rad below
+    const dLon = deg2rad(lon2 - lon1);
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(deg2rad(lat1)) *
+        Math.cos(deg2rad(lat2)) *
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const d = R * c; // Distance in km
+    return d;
+  }
+
+  function deg2rad(deg) {
+    return deg * (Math.PI / 180);
+  }
+
+  function sortPostsByDistance() {
+    if (countryInfo) {
+      console.log("ORIGINAL INFO", countryInfo);
+      const lati = countryInfo.locationposts.map((loc) => {
+        return loc.latitude;
+      });
+      const long = countryInfo.locationposts.map((loc) => {
+        return loc.longitude;
+      });
+      console.log("LATITUDE", lati);
+      console.log("LONGITUTDE", long);
+
+      function closestLocation(postLocation, userLocation) {
+        // getDistanceFromLatLonInKm()
+        console.log("I AM LOADING!");
+      }
+    }
+  }
+
   function renderCountryInfo() {
     if (!countryInfo.name) {
       // console.log("No info yet chief");
@@ -91,6 +131,7 @@ export default function CountryPage() {
       <Container>
         {renderCountryPost()}
         {renderCountryInfo()}
+        {sortPostsByDistance()}
       </Container>
     </div>
   );
