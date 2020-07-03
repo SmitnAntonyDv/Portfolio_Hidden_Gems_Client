@@ -16,7 +16,6 @@ import {
 } from "react-bootstrap";
 
 export default function CountryPage() {
-  const [distanceToLocation, setDistanceToLocation] = useState();
   const dispatch = useDispatch();
   const countryInfo = useSelector(selectSpecificCountryInfo);
 
@@ -36,9 +35,10 @@ export default function CountryPage() {
         Math.sin(dLon / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     const d = R * c; // Distance in km
-    // setDistanceToLocation(d);
+    distance.push(d);
     return d;
   }
+  let distance = [];
 
   //hardcoded UserLocation (Bali Denspar)
   const userLocation = { lat: -8.65629, lon: 115.222099 };
@@ -180,7 +180,7 @@ export default function CountryPage() {
   useEffect(() => {
     dispatch(fetchCountryPosts(countryId));
   }, []);
-
+  console.log("IS THIS WORKING JEZUS!?", distance);
   return (
     <div>
       <Container>
