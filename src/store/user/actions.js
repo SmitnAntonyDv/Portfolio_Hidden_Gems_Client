@@ -29,3 +29,20 @@ export function logingIn(email, password) {
     }
   };
 }
+
+export function signUp(name, email, password, phoneNumber) {
+  return async (dispatch, getState) => {
+    try {
+      const res = await axios.post(`${url}/signup`, {
+        name,
+        email,
+        password,
+        phoneNumber,
+      });
+
+      dispatch(loginSuccess(res.data));
+    } catch (e) {
+      console.log(e);
+    }
+  };
+}
