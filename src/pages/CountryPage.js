@@ -18,10 +18,12 @@ import {
 export default function CountryPage() {
   const dispatch = useDispatch();
   const countryInfo = useSelector(selectSpecificCountryInfo);
-
+  const [postDistanceArray, setpostDistanceArray] = useState("");
+  const [array, setArray] = useState("");
+  const [orderByDistance, setOrderByDitance] = useState(true);
   const { countryId } = useParams();
 
-  // haversine forumla function
+  // haversine formula function
   function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
     //lat1&lon1 is location of user whereas lat2&lon2 is location from suggested spot
     const R = 6371; // Radius of the earth in km
@@ -35,132 +37,120 @@ export default function CountryPage() {
         Math.sin(dLon / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     const d = R * c; // Distance in km
-    distance.push(d);
     return d;
   }
-  let distance = [];
-
-  //hardcoded UserLocation (Bali Denspar)
-  const userLocation = { lat: -8.65629, lon: 115.222099 };
-
-  function cardSorter() {
-    console.log("hello");
+  function deg2rad(deg) {
+    return deg * (Math.PI / 180);
   }
 
+  //hardcoded UserLocation (Bali Denspar)
+  const userLocation = { lat: Number(-8.65629), lon: Number(115.222099) };
+
+  function ButtonToggleSortDistance() {
+    setOrderByDitance(!orderByDistance);
+    console.log("ITS ALIVE BABY!!!!");
+  }
+
+  //adds distance to the postLocationArray
+  if (postDistanceArray[0]) {
+    const test = postDistanceArray.map((locationObject) => {
+      const calculatedistance = getDistanceFromLatLonInKm(
+        userLocation.lat,
+        userLocation.lon,
+        locationObject.latitude,
+        locationObject.longitude
+      );
+      return { ...locationObject, distance: calculatedistance };
+    });
+    var sortedByDistance = test.sort(
+      (a, b) => Number(a.distance) - Number(b.distance)
+    );
+    console.log("YES?!", sortedByDistance);
+  }
+
+  // console.log("HELLO", sortedByDistance);
+
+  function renderSortingButtons() {
+    return (
+      <Row>
+        <Col>
+          <div>
+            <button>Most liked</button>
+            <button>Most Recent</button>
+            <button onClick={ButtonToggleSortDistance}>
+              closest to your location
+            </button>
+          </div>
+        </Col>
+      </Row>
+    );
+  }
   function renderCountryPost() {
-    if (!countryInfo) {
-      // console.log("no data yet chief!");
+    if (!postDistanceArray) {
       return <h2>Loading posts chief! . . . </h2>;
     } else {
       return (
         <Row>
           <Col>
-            <div>
-              <button>Most liked</button>
-              <button>Most Recent</button>
-              <button onClick={cardSorter}>closest to your location</button>
-            </div>
-
             <CardGroup style={{ flexDirection: "column" }}>
-              {countryInfo.locationposts.map((post) => {
-                return (
-                  <Card key={post.id}>
-                    <Card.Body>
-                      <Card.Title>{post.title}</Card.Title>
-                      <Card.Text>{post.description}</Card.Text>
-                      <Card.Img size='lg' src={post.imageUrl} alt='' />
-                      <Card.Text>location :{post.adress}</Card.Text>
-                      <h2>
-                        THE DISTANCE BETWEEN YOU AND THIS LOCATION IS:{" "}
-                        {getDistanceFromLatLonInKm(
-                          userLocation.lat,
-                          userLocation.lon,
-                          post.latitude,
-                          post.longitude
-                        ).toFixed(2)}{" "}
-                        km
-                      </h2>
-                      <p>
-                        latitude: {post.latitude},
-                        <br />
-                        longitude: {post.longitude}
-                      </p>
-                      <Button varient='primary' size='lg'>
-                        <Link to={`/locations/${post.id}/details`}>
-                          Explore this location!
-                        </Link>
-                      </Button>
-                    </Card.Body>
-                  </Card>
-                );
-              })}
+              {orderByDistance
+                ? postDistanceArray.map((post) => {
+                    return (
+                      <Card key={post.id}>
+                        <Card.Body>
+                          <Card.Title>{post.title}</Card.Title>
+                          <Card.Text>{post.description}</Card.Text>
+                          <Card.Img size='lg' src={post.imageUrl} alt='' />
+                          <Card.Text>location :{post.adress}</Card.Text>
+                          THE DISTANCE BETWEEN YOU AND THIS LOCATION IS:{" "}
+                          <p>
+                            latitude: {post.latitude},
+                            <br />
+                            longitude: {post.longitude}
+                          </p>
+                          <Button varient='primary' size='lg'>
+                            <Link to={`/locations/${post.id}/details`}>
+                              Explore this location!
+                            </Link>
+                          </Button>
+                        </Card.Body>
+                      </Card>
+                    );
+                  })
+                : sortedByDistance.map((post) => {
+                    return (
+                      <Card key={post.id}>
+                        <Card.Body>
+                          <Card.Title>{post.title}</Card.Title>
+                          <Card.Text>{post.description}</Card.Text>
+                          <Card.Img size='lg' src={post.imageUrl} alt='' />
+                          <Card.Text>location :{post.adress}</Card.Text>
+                          THE DISTANCE BETWEEN YOU AND THIS LOCATION IS:{" "}
+                          {getDistanceFromLatLonInKm(
+                            userLocation.lat,
+                            userLocation.lon,
+                            post.latitude,
+                            post.longitude
+                          ).toFixed(2)}{" "}
+                          km
+                          <p>
+                            latitude: {post.latitude},
+                            <br />
+                            longitude: {post.longitude}
+                          </p>
+                          <Button varient='primary' size='lg'>
+                            <Link to={`/locations/${post.id}/details`}>
+                              Explore this location!
+                            </Link>
+                          </Button>
+                        </Card.Body>
+                      </Card>
+                    );
+                  })}
             </CardGroup>
           </Col>
         </Row>
       );
-    }
-  }
-
-  function deg2rad(deg) {
-    return deg * (Math.PI / 180);
-  }
-
-  function sortPostsByDistance() {
-    if (countryInfo) {
-      // console.log("ORIGINAL INFO", countryInfo);
-      const lat = countryInfo.locationposts.map((loc) => {
-        return loc.latitude;
-      });
-      const lon = countryInfo.locationposts.map((loc) => {
-        return loc.longitude;
-      });
-
-      // calculating distance between locations and user.
-      console.log("USERLAT", userLocation.lat);
-      console.log("USERLON", userLocation.lon);
-      console.log("LOCATIONLAT", lat[2]);
-      console.log("LOCATIONLON", lon[2]);
-      console.log(
-        "EUREKA?",
-        getDistanceFromLatLonInKm(
-          userLocation.lat,
-          userLocation.lon,
-          lat[2],
-          lon[2]
-        )
-      );
-
-      // function closestLocation(postLocation, userLocation) {
-      //   console.log("What is my userLocation?", userLocation.lat); //?? it works though?
-      //   console.log("what is my postLocation", postLocation);
-
-      //   //calculating distance from user to post1
-      //   //formula format
-      //   //getDistanceFromLatoLonInKM(lat1, lon1, lat2, lon2)
-      //   const sortDistance = (post1, post2) => {
-      //     console.log("HELLLOOOO", userLocation.lat);
-      //     const distance1 = getDistanceFromLatLonInKm(
-      //       userLocation.lat,
-      //       userLocation.lon,
-      //       post1.lat,
-      //       post1.lon
-      //     );
-      //     //calculating distance from user to post2
-      //     const distance2 = getDistanceFromLatLonInKm(
-      //       userLocation.lat,
-      //       userLocation.lon,
-      //       post2.lat,
-      //       post2.lon
-      //     );
-      //     //compare both distances.
-      //     return distance1 - distance2;
-      //   };
-      //   let result = postLocation.sort(sortDistance);
-      //   console.log("WHAT MA RESULT", result);
-      //   return result;
-      // }
-
-      // closestLocation(postLocation, userLocation);
     }
   }
 
@@ -180,13 +170,17 @@ export default function CountryPage() {
   useEffect(() => {
     dispatch(fetchCountryPosts(countryId));
   }, []);
-  console.log("IS THIS WORKING JEZUS!?", distance);
+  useEffect(() => {
+    setpostDistanceArray(countryInfo.locationposts);
+  }, [countryInfo]);
+  // console.log("WORKING?", array);
+
   return (
     <div>
       <Container>
+        {renderSortingButtons()}
         {renderCountryPost()}
         {renderCountryInfo()}
-        {sortPostsByDistance()}
       </Container>
     </div>
   );
