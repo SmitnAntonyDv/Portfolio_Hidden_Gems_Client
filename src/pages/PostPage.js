@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { Col } from "react-bootstrap";
-import { newPost } from "../store/newpost/actions";
+import { newPost, getAdress } from "../store/newpost/actions";
 import { selectUser } from "../store/user/selector";
 
 export default function PostPage() {
@@ -15,6 +15,7 @@ export default function PostPage() {
   const [countryId, setCountryId] = useState(1);
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitutde] = useState("");
+  const [fetchUserAdress, setFetchUserAdress] = useState(false);
 
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
@@ -42,23 +43,32 @@ export default function PostPage() {
     setImageUrl("");
   }
 
+  //get user lat&lon and convert to adress
   function getUserLocationSuccess(pos) {
     setLatitude(pos.coords.latitude);
     setLongitutde(pos.coords.longitude);
+    setFetchUserAdress(!fetchUserAdress);
   }
   function error(err) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   }
+  const options = { enableHighAccuracy: true };
 
+  //buttonhandler
   function getLocation() {
     console.log("CLICKED!");
     return navigator.geolocation.getCurrentPosition(
       getUserLocationSuccess,
-      error
+      error,
+      options
     );
   }
   console.log(latitude);
   console.log(longitude);
+
+  useEffect(() => {
+    dispatch(getAdress(latitude, longitude));
+  }, [fetchUserAdress]);
   return (
     <div>
       <Container>
