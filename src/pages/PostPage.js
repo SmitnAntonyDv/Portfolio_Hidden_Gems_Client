@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { Col } from "react-bootstrap";
-
+import { newPost } from "../store/newpost/actions";
 import { selectUser } from "../store/user/selector";
 
 export default function PostPage() {
@@ -12,8 +12,9 @@ export default function PostPage() {
   const [description, setDescription] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [adress, setAdress] = useState("");
+  const [countryId, setCountryId] = useState(1);
   const [latitude, setLatitude] = useState("");
-  const [longitutde, setLongitutde] = useState("");
+  const [longitude, setLongitutde] = useState("");
 
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
@@ -22,12 +23,42 @@ export default function PostPage() {
   function submitForm(e) {
     e.preventDefault();
 
-    dispatch();
+    dispatch(
+      newPost(
+        title,
+        description,
+        imageUrl,
+        adress,
+        token,
+        id,
+        countryId,
+        latitude,
+        longitude
+      )
+    );
 
     setTitle("");
     setDescription("");
     setImageUrl("");
   }
+
+  function getUserLocationSuccess(pos) {
+    setLatitude(pos.coords.latitude);
+    setLongitutde(pos.coords.longitude);
+  }
+  function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
+
+  function getLocation() {
+    console.log("CLICKED!");
+    return navigator.geolocation.getCurrentPosition(
+      getUserLocationSuccess,
+      error
+    );
+  }
+  console.log(latitude);
+  console.log(longitude);
   return (
     <div>
       <Container>
@@ -56,6 +87,21 @@ export default function PostPage() {
           </Form.Group>
 
           <Form.Group>
+            <Form.Label>Country</Form.Label>
+            <Form.Control
+              as='select'
+              onChange={(e) => setCountryId(e.target.value)}
+              custom
+            >
+              <option value='1'>Indonesia</option>
+              <option value='2'>Malaysia</option>
+              <option value='3'>Thailand</option>
+              <option value='4'>Singapore</option>
+              <option value='5'>Vietnam</option>
+            </Form.Control>
+          </Form.Group>
+
+          <Form.Group>
             <Form.Label> Image </Form.Label>
             <Form.Control
               value={imageUrl}
@@ -68,6 +114,8 @@ export default function PostPage() {
           <Form.Group controlId='formBasicCehckBox'>
             <Form.Check type='checkbox' label='Share location' required />
           </Form.Group>
+
+          <button onClick={getLocation}>TESTING LOCATION GET</button>
 
           <Form.Group className='mt-5'>
             <Button variant='primary' type='submit' onClick={submitForm}>
