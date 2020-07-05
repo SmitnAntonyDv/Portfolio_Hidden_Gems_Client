@@ -65,7 +65,7 @@ export function getUserWithStoredToken() {
       });
 
       // token still valid
-      console.log("WHAT INFO AM I GETTING HERE?!", res.data);
+      // console.log("WHAT INFO AM I GETTING HERE?!", res.data);
       dispatch(tokenStillValid(res.data));
     } catch (error) {
       if (error.response) {
