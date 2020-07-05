@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import { Col } from "react-bootstrap";
 import { newPost, getAdress } from "../store/newpost/actions";
 import { selectUser } from "../store/user/selector";
+import { selectNewPost } from "../store/newpost/selector";
 
 export default function PostPage() {
   const [title, setTitle] = useState("");
@@ -20,6 +21,9 @@ export default function PostPage() {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const { token, id } = user;
+  const userAdress = useSelector(selectNewPost);
+
+  // setAdress(`${country}, ${city}`);
 
   function submitForm(e) {
     e.preventDefault();
@@ -42,7 +46,6 @@ export default function PostPage() {
     setDescription("");
     setImageUrl("");
   }
-
   //get user lat&lon and convert to adress
   function getUserLocationSuccess(pos) {
     setLatitude(pos.coords.latitude);
@@ -63,12 +66,15 @@ export default function PostPage() {
       options
     );
   }
-  console.log(latitude);
-  console.log(longitude);
+  // console.log(latitude);
+  // console.log(longitude);
 
   useEffect(() => {
     dispatch(getAdress(latitude, longitude));
   }, [fetchUserAdress]);
+
+  console.log("THIS DATA", userAdress);
+  console.log("ADRESSS", adress);
   return (
     <div>
       <Container>
@@ -92,6 +98,18 @@ export default function PostPage() {
               onChange={(e) => setDescription(e.target.value)}
               type='text'
               placeholder='describe your beautifull locations to other users'
+              required
+            />
+          </Form.Group>
+
+          {/* NEEDS TO BE REFACTURED -> adress taken from API call  */}
+          <Form.Group>
+            <Form.Label>Adress</Form.Label>
+            <Form.Control
+              value={adress}
+              onChange={(e) => setAdress(e.target.value)}
+              type='text'
+              placeholder='fill in the adress here'
               required
             />
           </Form.Group>

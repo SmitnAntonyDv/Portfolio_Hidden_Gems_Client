@@ -10,7 +10,9 @@ export function newPost(
   adress,
   token,
   id,
-  countryId
+  countryId,
+  latitude,
+  longitude
 ) {
   return async (dispatch, getState) => {
     console.log("working");
@@ -22,8 +24,8 @@ export function newPost(
         adress,
         userId: id,
         countryId,
-        latitude: "something",
-        longitude: "something",
+        latitude,
+        longitude,
       });
     } catch (e) {
       console.log(e);
