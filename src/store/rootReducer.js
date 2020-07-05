@@ -5,6 +5,7 @@ import countrypage from "./countrypage/reducer";
 import countryAPI from "./countrypage/countryAPI/reducer";
 import detailspage from "./detailpage/reducer";
 import weatherAPI from "./weather/reducer";
+import newpost from "./newpost/reducer";
 
 export default combineReducers({
   user,
@@ -13,4 +14,5 @@ export default combineReducers({
   countryAPI,
   detailspage,
   weatherAPI,
+  newpost,
 });
