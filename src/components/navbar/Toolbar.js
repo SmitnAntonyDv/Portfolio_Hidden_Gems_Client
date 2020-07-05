@@ -57,8 +57,8 @@ export default function Toolbar() {
         </Nav>
         <Nav>
           {loginControls}
-          <Nav.Link eventKey={2} href='#memes'>
-            Something
+          <Nav.Link eventKey={2} href='/user/postlocation'>
+            Post your Must-visit
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
