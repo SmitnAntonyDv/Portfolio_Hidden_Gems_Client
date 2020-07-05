@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 
 import { Switch, Route } from "react-router-dom";
@@ -11,8 +11,18 @@ import Toolbar from "./components/navbar/Toolbar";
 import Footer from "./components/footer/Footer";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
+import PostPage from "./pages/PostPage";
+
+import { useDispatch, useSelector } from "react-redux";
+import { getUserWithStoredToken } from "./store/user/actions";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserWithStoredToken());
+  }, [dispatch]);
+
   return (
     <div className='App'>
       <Toolbar />
@@ -28,6 +38,7 @@ function App() {
         <Route path='/user/:userId/dashboard' component={DashboardPage} />
         <Route path='/login' component={Login} />
         <Route path='/signup' component={Signup} />
+        <Route path='/user/postlocation' component={PostPage} />
       </Switch>
       <Footer />
     </div>

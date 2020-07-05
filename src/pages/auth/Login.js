@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-
+import { logingIn } from "../../store/user/actions";
+import { selectToken } from "../../store/user/selector";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
-import { logingIn } from "../../store/user/actions";
-import { selectToken } from "../../store/user/selector";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -29,6 +28,9 @@ export default function Login() {
     console.log(email);
     console.log(password);
     dispatch(logingIn(email, password));
+
+    setEmail("");
+    setPassword("");
   }
   return (
     <Container>
