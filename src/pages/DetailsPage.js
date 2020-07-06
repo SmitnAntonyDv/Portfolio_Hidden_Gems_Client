@@ -24,13 +24,19 @@ export default function DetailsPage() {
   useEffect(() => {
     dispatch(FetchPost(postId));
   }, []);
+  console.log("WHAT IS POST DATA?", postData);
   return (
     <div>
       <h2>{title}</h2>
       <img src={imageUrl} alt='' />
       <p>{description}</p>
       <p>{adress}</p>
-      <Mymap latitude={latitude} longitude={longitude} adress={adress} />
+      <Mymap
+        latitude={latitude}
+        longitude={longitude}
+        adress={adress}
+        id={postData.id}
+      />
       <WeatherInfo latitude={latitude} longitude={longitude} />
     </div>
   );
