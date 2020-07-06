@@ -140,10 +140,15 @@ export default function PostPage() {
           </Form.Group>
 
           <Form.Group controlId='formBasicCehckBox'>
-            <Form.Check type='checkbox' label='Share location' required />
+            <Form.Check
+              type='checkbox'
+              label='Share location'
+              onChange={getLocation}
+              required
+            />
           </Form.Group>
 
-          <button onClick={getLocation}>TESTING LOCATION GET</button>
+          {/* <button onClick={getLocation}>TESTING LOCATION GET</button> */}
 
           <Form.Group className='mt-5'>
             <Button variant='primary' type='submit' onClick={submitForm}>

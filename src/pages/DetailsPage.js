@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { FetchPost } from "../store/detailpage/actions";
 import { selectPost } from "../store/detailpage/selectors";
 import WeatherInfo from "../components/weatherInfo/WeatherInfo";
+import LeafletMap from "../components/leafletMap";
+import Mymap from "../components/leafletMap";
 
 export default function DetailsPage() {
   const postData = useSelector(selectPost);
@@ -28,6 +30,7 @@ export default function DetailsPage() {
       <img src={imageUrl} alt='' />
       <p>{description}</p>
       <p>{adress}</p>
+      <Mymap latitude={latitude} longitude={longitude} adress={adress} />
       <WeatherInfo latitude={latitude} longitude={longitude} />
     </div>
   );

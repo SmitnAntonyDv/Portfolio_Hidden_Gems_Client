@@ -57,3 +57,9 @@ button.btn.btn-primary {
   color: black !important;
   /* margin: 1.2vh; */
 }
+
+/* leaflet map styling */
+.leaflet-container {
+  width: 50%;
+  height: 50vh;
+}
