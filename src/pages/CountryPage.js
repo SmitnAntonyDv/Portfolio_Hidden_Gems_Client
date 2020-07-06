@@ -66,10 +66,10 @@ export default function CountryPage() {
     sortedByDistance = test.sort(
       (a, b) => Number(a.distance) - Number(b.distance)
     );
-    console.log("YES?!", sortedByDistance);
+    // console.log("YES?!", sortedByDistance);
   }
 
-  console.log("HELLO!!!!", sortedByDistance);
+  // console.log("HELLO!!!!", sortedByDistance);
 
   function renderSortingButtons() {
     return (

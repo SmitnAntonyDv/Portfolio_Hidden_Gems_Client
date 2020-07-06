@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useHistory, useParams, matchPath } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectSpecificCountryInfo } from "../../store/countrypage/selectors";
-import { selectCountryInfo } from "../../store/countrypage/countryAPI/selector";
+import { selectPostId } from "../../store/detailpage/selectors";
 import { selectToken } from "../../store/user/selector";
 import "../../App.css";
 import { Button, Navbar, Nav, NavDropdown } from "react-bootstrap";
@@ -11,6 +11,7 @@ import LoggedOut from "./loggedOut";
 
 export default function Toolbar() {
   const country = useSelector(selectSpecificCountryInfo);
+  const postId = useSelector(selectPostId);
   const history = useHistory();
   const { userId } = useParams();
   const token = useSelector(selectToken);
@@ -30,36 +31,37 @@ export default function Toolbar() {
   }
 
   const loginControls = token ? <LoggedIn /> : <LoggedOut />;
+  const postIfLoggedIn = token ? (
+    <Nav.Link eventKey={2} href='/user/postlocation'>
+      Post your Must-visit
+    </Nav.Link>
+  ) : (
+    []
+  );
 
   function renderCountryButton() {
-    if (history.location.pathname === `/locations/${country.id}/posts`) {
-      return <Nav.Link href='/'>Explore other Countries</Nav.Link>;
-    } else if (history.location.pathname === `/locations/${userID}/details`) {
-      return (
-        <Link to={`/locations/${country.id}/posts`}>
-          <button>test</button>
-        </Link>
-      );
+    if (history.location.pathname === `/locations/${postId}/details`) {
+      return <Link to={`/locations/${country.id}/posts`}>TESTIIIING !!!!</Link>;
     } else {
       return <div>{null}</div>;
     }
   }
-
+  function renderCountrybtn() {
+    return <Link to={`/locations/${country.id}/posts`}>{country.name}</Link>;
+  }
+  console.log("THIS DATA!!!", postId);
   return (
     <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
       <Navbar.Brand href='/'>Explore Hidden Gems</Navbar.Brand>
       <Navbar.Toggle aria-controls='responsive-navbar-nav' />
       <Navbar.Collapse id='responsive-navbar-nav'>
-        <Nav className='mr-auto'>
-          <Nav.Link href='/locations/:countryId/posts'>
-            {renderCountryButton()}
-          </Nav.Link>
+        <Nav className='mr-auto'>{renderCountryButton()}</Nav>
+        <Nav>
+          <Nav.Link>{renderCountrybtn()}</Nav.Link>
         </Nav>
         <Nav>
+          {postIfLoggedIn}
           {loginControls}
-          <Nav.Link eventKey={2} href='/user/postlocation'>
-            Post your Must-visit
-          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
