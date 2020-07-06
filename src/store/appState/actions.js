@@ -31,6 +31,6 @@ export const showMessageWithTimeout = (
 
     const timeout = timeOutMilliSeconds || DEFAULT_MESSAGE_TIMEOUT;
 
-    setTimeout(() => dispatch(clearMessage(), timeout));
+    setTimeout(() => dispatch(clearMessage()), timeout);
   };
 };

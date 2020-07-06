@@ -73,8 +73,6 @@ export default function PostPage() {
     dispatch(getAdress(latitude, longitude));
   }, [fetchUserAdress]);
 
-  console.log("THIS DATA", userAdress);
-  console.log("ADRESSS", adress);
   return (
     <div>
       <Container>
