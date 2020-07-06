@@ -9,6 +9,7 @@ import weatherAPI from "./weather/reducer";
 import newpost from "./newpost/reducer";
 
 export default combineReducers({
+  appState,
   user,
   homepage,
   countrypage,
