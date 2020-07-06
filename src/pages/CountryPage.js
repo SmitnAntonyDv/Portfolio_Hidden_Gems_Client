@@ -52,6 +52,7 @@ export default function CountryPage() {
   }
 
   //adds distance to the postLocationArray
+  let sortedByDistance = [];
   if (postDistanceArray[0]) {
     const test = postDistanceArray.map((locationObject) => {
       const calculatedistance = getDistanceFromLatLonInKm(
@@ -62,13 +63,13 @@ export default function CountryPage() {
       );
       return { ...locationObject, distance: calculatedistance };
     });
-    var sortedByDistance = test.sort(
+    sortedByDistance = test.sort(
       (a, b) => Number(a.distance) - Number(b.distance)
     );
     console.log("YES?!", sortedByDistance);
   }
 
-  // console.log("HELLO", sortedByDistance);
+  console.log("HELLO!!!!", sortedByDistance);
 
   function renderSortingButtons() {
     return (
@@ -90,66 +91,62 @@ export default function CountryPage() {
       return <h2>Loading posts chief! . . . </h2>;
     } else {
       return (
-        <Row>
-          <Col>
-            <CardGroup style={{ flexDirection: "column" }}>
-              {orderByDistance
-                ? postDistanceArray.map((post) => {
-                    return (
-                      <Card key={post.id}>
-                        <Card.Body>
-                          <Card.Title>{post.title}</Card.Title>
-                          <Card.Text>{post.description}</Card.Text>
-                          <Card.Img size='lg' src={post.imageUrl} alt='' />
-                          <Card.Text>location :{post.adress}</Card.Text>
-                          THE DISTANCE BETWEEN YOU AND THIS LOCATION IS:{" "}
-                          <p>
-                            latitude: {post.latitude},
-                            <br />
-                            longitude: {post.longitude}
-                          </p>
-                          <Button varient='primary' size='lg'>
-                            <Link to={`/locations/${post.id}/details`}>
-                              Explore this location!
-                            </Link>
-                          </Button>
-                        </Card.Body>
-                      </Card>
-                    );
-                  })
-                : sortedByDistance.map((post) => {
-                    return (
-                      <Card key={post.id}>
-                        <Card.Body>
-                          <Card.Title>{post.title}</Card.Title>
-                          <Card.Text>{post.description}</Card.Text>
-                          <Card.Img size='lg' src={post.imageUrl} alt='' />
-                          <Card.Text>location :{post.adress}</Card.Text>
-                          THE DISTANCE BETWEEN YOU AND THIS LOCATION IS:{" "}
-                          {getDistanceFromLatLonInKm(
-                            userLocation.lat,
-                            userLocation.lon,
-                            post.latitude,
-                            post.longitude
-                          ).toFixed(2)}{" "}
-                          km
-                          <p>
-                            latitude: {post.latitude},
-                            <br />
-                            longitude: {post.longitude}
-                          </p>
-                          <Button varient='primary' size='lg'>
-                            <Link to={`/locations/${post.id}/details`}>
-                              Explore this location!
-                            </Link>
-                          </Button>
-                        </Card.Body>
-                      </Card>
-                    );
-                  })}
-            </CardGroup>
-          </Col>
-        </Row>
+        <CardGroup>
+          {orderByDistance
+            ? postDistanceArray.map((post) => {
+                return (
+                  <Card key={post.id} className='countryCard-posts'>
+                    <Card.Body>
+                      <Card.Title>{post.title}</Card.Title>
+                      <Card.Text>{post.description}</Card.Text>
+                      <Card.Img size='lg' src={post.imageUrl} alt='' />
+                      <Card.Text>location :{post.adress}</Card.Text>
+                      THE DISTANCE BETWEEN YOU AND THIS LOCATION IS:{" "}
+                      <p>
+                        latitude: {post.latitude},
+                        <br />
+                        longitude: {post.longitude}
+                      </p>
+                      <Button varient='primary' size='lg'>
+                        <Link to={`/locations/${post.id}/details`}>
+                          Explore this location!
+                        </Link>
+                      </Button>
+                    </Card.Body>
+                  </Card>
+                );
+              })
+            : sortedByDistance.map((post) => {
+                return (
+                  <Card key={post.id}>
+                    <Card.Body>
+                      <Card.Title>{post.title}</Card.Title>
+                      <Card.Text>{post.description}</Card.Text>
+                      <Card.Img size='lg' src={post.imageUrl} alt='' />
+                      <Card.Text>location :{post.adress}</Card.Text>
+                      THE DISTANCE BETWEEN YOU AND THIS LOCATION IS:{" "}
+                      {getDistanceFromLatLonInKm(
+                        userLocation.lat,
+                        userLocation.lon,
+                        post.latitude,
+                        post.longitude
+                      ).toFixed(2)}{" "}
+                      km
+                      <p>
+                        latitude: {post.latitude},
+                        <br />
+                        longitude: {post.longitude}
+                      </p>
+                      <Button varient='primary' size='lg'>
+                        <Link to={`/locations/${post.id}/details`}>
+                          Explore this location!
+                        </Link>
+                      </Button>
+                    </Card.Body>
+                  </Card>
+                );
+              })}
+        </CardGroup>
       );
     }
   }
@@ -177,7 +174,7 @@ export default function CountryPage() {
 
   return (
     <div>
-      <Container>
+      <Container fluid>
         {renderSortingButtons()}
         {renderCountryPost()}
         {renderCountryInfo()}
