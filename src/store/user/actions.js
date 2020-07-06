@@ -1,12 +1,16 @@
 import axios from "axios";
 import { url } from "../../config/constants";
 import { selectToken } from "./selector";
+import {
+  appLoading,
+  appDoneLoading,
+  showMessageWithTimeout,
+  setMessage,
+} from "../appState/actions";
 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
 export const LOG_OUT = "LOG_OUT";
-
-export const logOut = () => ({ type: LOG_OUT });
 
 const loginSuccess = (userWithToken) => {
   //   console.log(userWithToken);
@@ -20,6 +24,8 @@ const tokenStillValid = (userWithoutToken) => ({
   payload: userWithoutToken,
 });
 
+export const logOut = () => ({ type: LOG_OUT });
+
 export function logingIn(email, password) {
   return async (dispatch, getState) => {
     try {
@@ -29,9 +35,23 @@ export function logingIn(email, password) {
       });
 
       dispatch(loginSuccess(res.data));
-      console.log("WHAT IS MY RES.DATA?", res.data);
-    } catch (e) {
-      console.log(e);
+      dispatch(
+        showMessageWithTimeout(
+          "success",
+          false,
+          "welcome back weary traveler!",
+          1500
+        )
+      );
+      // console.log("WHAT IS MY RES.DATA?", res.data);
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        dispatch(setMessage("danger", true, error.response.data.message));
+      } else {
+        console.log(error.message);
+        dispatch(setMessage("danger", true, error.message));
+      }
     }
   };
 }
@@ -47,6 +67,7 @@ export function signUp(name, email, password, phoneNumber) {
       });
 
       dispatch(loginSuccess(res.data));
+      dispatch(showMessageWithTimeout("success", true, "account created"));
     } catch (e) {
       console.log(e);
     }

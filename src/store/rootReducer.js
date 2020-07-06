@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import appState from "./appState/reducer";
 import user from "./user/reducer";
 import homepage from "./homepage/reducer";
 import countrypage from "./countrypage/reducer";
@@ -8,6 +9,7 @@ import weatherAPI from "./weather/reducer";
 import newpost from "./newpost/reducer";
 
 export default combineReducers({
+  appState,
   user,
   homepage,
   countrypage,

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import "./App.css";
 
+import MessageBox from "./components/MessageBox";
 import { Switch, Route } from "react-router-dom";
 import Other from "./pages/Other";
 import Homepage from "./pages/Homepage";
@@ -15,9 +16,11 @@ import PostPage from "./pages/PostPage";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getUserWithStoredToken } from "./store/user/actions";
+import { selectAppLoading } from "./store/appState/selectors";
 
 function App() {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectAppLoading);
 
   useEffect(() => {
     dispatch(getUserWithStoredToken());
@@ -26,6 +29,7 @@ function App() {
   return (
     <div className='App'>
       <Toolbar />
+      <MessageBox />
       <Switch>
         <Route exact path='/' component={Homepage} />
         <Route path='/testing' component={Other} />

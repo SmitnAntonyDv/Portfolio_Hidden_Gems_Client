@@ -17,16 +17,20 @@ export function newPost(
   return async (dispatch, getState) => {
     console.log("working");
     try {
-      const res = await axios.post(`${url}/newpost`, {
-        title,
-        description,
-        imageUrl,
-        adress,
-        userId: id,
-        countryId,
-        latitude,
-        longitude,
-      });
+      const res = await axios.post(
+        `${url}/newpost`,
+        {
+          title,
+          description,
+          imageUrl,
+          adress,
+          userId: id,
+          countryId,
+          latitude,
+          longitude,
+        },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
     } catch (e) {
       console.log(e);
     }
