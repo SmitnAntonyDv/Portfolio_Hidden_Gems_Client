@@ -39,6 +39,13 @@ export function newPost(
         },
         { headers: { Authorization: `Bearer ${token}` } }
       );
+      dispatch(
+        showMessageWithTimeout(
+          "success",
+          false,
+          "Thank you for sharing your precious location with the community!"
+        )
+      );
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);
