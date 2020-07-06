@@ -28,17 +28,17 @@ export default function DetailsPage() {
   console.log("WHAT IS POST DATA?", postData);
   return (
     <Container fluid>
-      <Row>
+      <Row style={{ backgroundClip: "border-box", border: "solid" }}>
         <Col>
           <Image src={imageUrl} alt='' style={{ width: "100%" }} fluid />
         </Col>
-      </Row>
-      <Row>
-        <Col md={5} style={{ border: "solid" }}>
+        <Col md={4}>
           <h2>{title}</h2>
           <p>{description}</p>
           <p>{adress}</p>
         </Col>
+      </Row>
+      <Row>
         <Col>
           <Mymap
             latitude={latitude}
@@ -47,9 +47,9 @@ export default function DetailsPage() {
             id={postData.id}
           />
         </Col>
-      </Row>
 
-      <WeatherInfo latitude={latitude} longitude={longitude} />
+        <WeatherInfo latitude={latitude} longitude={longitude} />
+      </Row>
     </Container>
   );
 }
