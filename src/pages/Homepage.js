@@ -18,8 +18,8 @@ export default function Homepage() {
         <>
           {countryAndPostData.map((item) => {
             return (
-              <Row>
-                <Col className='m-3' key={item.id}>
+              <Row key={item.id}>
+                <Col style={{ textAlign: "center" }} className='m-3'>
                   <Link to={`/locations/${item.id}/posts`}>
                     <Button
                       className='homePageButtons'
@@ -46,7 +46,7 @@ export default function Homepage() {
       <div className='heroBanner'>
         <h1 className='hero-text'>What will you explore next?</h1>
       </div>
-      <Container>
+      <Container fluid>
         <span className='homepageButtonWrapper'>
           <div className='homepageButton'>{renderData()}</div>
         </span>

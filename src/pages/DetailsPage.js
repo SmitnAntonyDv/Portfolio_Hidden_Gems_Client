@@ -6,6 +6,7 @@ import { selectPost } from "../store/detailpage/selectors";
 import WeatherInfo from "../components/weatherInfo/WeatherInfo";
 import LeafletMap from "../components/leafletMap";
 import Mymap from "../components/leafletMap";
+import { Container, Row, Col, Image } from "react-bootstrap";
 
 export default function DetailsPage() {
   const postData = useSelector(selectPost);
@@ -26,18 +27,29 @@ export default function DetailsPage() {
   }, []);
   console.log("WHAT IS POST DATA?", postData);
   return (
-    <div>
-      <h2>{title}</h2>
-      <img src={imageUrl} alt='' />
-      <p>{description}</p>
-      <p>{adress}</p>
-      <Mymap
-        latitude={latitude}
-        longitude={longitude}
-        adress={adress}
-        id={postData.id}
-      />
-      <WeatherInfo latitude={latitude} longitude={longitude} />
-    </div>
+    <Container fluid>
+      <Row style={{ backgroundClip: "border-box", border: "solid" }}>
+        <Col>
+          <Image src={imageUrl} alt='' style={{ width: "100%" }} fluid />
+        </Col>
+        <Col md={4}>
+          <h2>{title}</h2>
+          <p>{description}</p>
+          <p>{adress}</p>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Mymap
+            latitude={latitude}
+            longitude={longitude}
+            adress={adress}
+            id={postData.id}
+          />
+        </Col>
+
+        <WeatherInfo latitude={latitude} longitude={longitude} />
+      </Row>
+    </Container>
   );
 }
