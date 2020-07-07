@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import L, { Icon } from "leaflet";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { selectUser } from "../../store/user/selector";
+import { useSelector } from "react-redux";
+import { Button } from "react-bootstrap";
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -17,13 +20,57 @@ const backpackIcon = new Icon({
 });
 
 export default function Mymap(props) {
-  console.log("WHAT ARE MY PROPS", props);
   const { id, latitude, longitude, adress } = props;
+  const User = useSelector(selectUser);
   const [togglePopup, setTogglePopup] = useState(false);
+  const [toggleTracking, setToggleTracking] = useState(false);
+  const [trackingBtnText, setTrackingBtnText] = useState(false);
+  const [updatedLatitude, setUpdatedLatitude] = useState("");
+  const [updatedLongitude, setUpdatedLongitude] = useState("");
+
+  // user coords switch block
+  let userLocation;
+  if (!!User.latitude && User.longitude) {
+    userLocation = {
+      lat: Number(User.latitude),
+      lon: Number(User.longitude),
+    };
+  } else {
+    userLocation = {
+      lat: Number(updatedLatitude),
+      lon: Number(updatedLongitude),
+    };
+  }
+  //User tracker function block
+  function updateLocation(pos) {
+    const coords = pos.coords;
+    setUpdatedLatitude(coords.latitude);
+    setUpdatedLongitude(coords.longitude);
+  }
+  function watchUserLocation() {
+    return navigator.geolocation.watchPosition(updateLocation, error, options);
+  }
+  function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
+  const options = { enableHighAccuracy: true };
+  watchUserLocation();
+
+  //toggle function
+  function toggleUserTracking() {
+    setToggleTracking(!toggleTracking);
+    setTrackingBtnText(!trackingBtnText);
+  }
+  let trackOrNot;
+  if (!!trackingBtnText) {
+    trackOrNot = "Disable Tracking";
+  } else {
+    trackOrNot = "Enable Tracking";
+  }
 
   return (
-    //hardcoded ubud lat and long
     <div>
+      <Button onClick={toggleUserTracking}>{trackOrNot}</Button>
       {props.id ? (
         <Map center={[latitude, longitude]} zoom={12}>
           <TileLayer
@@ -43,6 +90,16 @@ export default function Mymap(props) {
             </Popup>
           ) : (
             []
+          )}
+          {(User.id && !!toggleTracking) ||
+          (updatedLatitude && !!toggleTracking) ? (
+            <Marker
+              key={User.id}
+              position={[userLocation.lat, userLocation.lon]}
+              icon={backpackIcon}
+            />
+          ) : (
+            <></>
           )}
         </Map>
       ) : (

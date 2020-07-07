@@ -25,7 +25,7 @@ export default function DetailsPage() {
   useEffect(() => {
     dispatch(FetchPost(postId));
   }, []);
-  console.log("WHAT IS POST DATA?", postData);
+  // console.log("WHAT IS POST DATA?", postData);
   return (
     <Container fluid>
       <Row style={{ backgroundClip: "border-box", border: "solid" }}>
@@ -47,8 +47,9 @@ export default function DetailsPage() {
             id={postData.id}
           />
         </Col>
-
-        <WeatherInfo latitude={latitude} longitude={longitude} />
+        <Col>
+          <WeatherInfo latitude={latitude} longitude={longitude} />
+        </Col>
       </Row>
     </Container>
   );
