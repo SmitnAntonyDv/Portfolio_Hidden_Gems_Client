@@ -13,7 +13,7 @@ export function FetchWeather(latitude, longitude) {
     console.log("working? FETCHWEATHER", latitude, longitude);
     try {
       const res = await Axios.get(
-        `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=5dc4f703df7541395af93b0beab81835`
+        `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=5dc4f703df7541395af93b0beab81835`
       );
       console.log("WHAT BE THE RESPONSE CHIEF?", res.data);
       dispatch(WeatherFetchSucces(res.data));

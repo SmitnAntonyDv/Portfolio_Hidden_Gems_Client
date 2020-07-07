@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import L, { Icon } from "leaflet";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { selectUser } from "../../store/user/selector";
+import { useSelector } from "react-redux";
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -20,10 +22,43 @@ export default function Mymap(props) {
   console.log("WHAT ARE MY PROPS", props);
   const { id, latitude, longitude, adress } = props;
   const [togglePopup, setTogglePopup] = useState(false);
+  const User = useSelector(selectUser);
+  const [updatedLatitude, setUpdatedLatitude] = useState("");
+  const [updatedLongitude, setUpdatedLongitude] = useState("");
 
+  let userLocation;
+  if (!!User.latitude && User.longitude) {
+    userLocation = {
+      lat: Number(User.latitude),
+      lon: Number(User.longitude),
+    };
+  } else {
+    userLocation = {
+      lat: Number(updatedLatitude),
+      lon: Number(updatedLongitude),
+    };
+  }
+  console.log("Have user STORED VALUE?", userLocation);
+  function updateLocation(pos) {
+    const coords = pos.coords;
+    setUpdatedLatitude(coords.latitude);
+    setUpdatedLongitude(coords.longitude);
+  }
+
+  function watchUserLocation() {
+    return navigator.geolocation.watchPosition(updateLocation, error, options);
+  }
+  function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
+  const options = { enableHighAccuracy: true };
+  watchUserLocation();
+  //hardcoded Data
+  console.log("MOVING LAT", userLocation.lat);
+  console.log("MOVING LON", userLocation.lon);
   return (
-    //hardcoded ubud lat and long
     <div>
+      <button>testing location change!</button>
       {props.id ? (
         <Map center={[latitude, longitude]} zoom={12}>
           <TileLayer
@@ -43,6 +78,15 @@ export default function Mymap(props) {
             </Popup>
           ) : (
             []
+          )}
+          {User.id || updatedLatitude ? (
+            <Marker
+              key={User.id}
+              position={[userLocation.lat, userLocation.lon]}
+              icon={backpackIcon}
+            />
+          ) : (
+            <></>
           )}
         </Map>
       ) : (
