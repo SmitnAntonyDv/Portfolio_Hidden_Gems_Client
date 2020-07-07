@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCountryPosts } from "../store/countrypage/actions";
 import { selectSpecificCountryInfo } from "../store/countrypage/selectors";
 import CountryAPIcard from "../components/CountryAPIcard";
+import { getLocation, error, options } from "./PostPage";
 
 import {
   Container,
@@ -17,11 +18,13 @@ import {
 
 export default function CountryPage() {
   const dispatch = useDispatch();
-  const countryInfo = useSelector(selectSpecificCountryInfo);
-  const [postDistanceArray, setpostDistanceArray] = useState("");
-  const [array, setArray] = useState("");
-  const [orderByDistance, setOrderByDitance] = useState(true);
   const { countryId } = useParams();
+  const countryInfo = useSelector(selectSpecificCountryInfo);
+
+  const [postDistanceArray, setpostDistanceArray] = useState("");
+  const [orderByDistance, setOrderByDitance] = useState(true);
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitutde] = useState("");
 
   // haversine formula function
   function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
@@ -48,8 +51,25 @@ export default function CountryPage() {
 
   function ButtonToggleSortDistance() {
     setOrderByDitance(!orderByDistance);
-    console.log("ITS ALIVE BABY!!!!");
   }
+
+  function updateUserLocation(pos) {
+    setLatitude(pos.coords.latitude);
+    setLongitutde(pos.coords.longitude);
+  }
+
+  function updateLocation() {
+    return navigator.geolocation.getCurrentPosition(
+      updateUserLocation,
+      error,
+      options
+    );
+  }
+
+  function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
+  const options = { enableHighAccuracy: true };
 
   //adds distance to the postLocationArray
   let sortedByDistance = [];
@@ -66,10 +86,7 @@ export default function CountryPage() {
     sortedByDistance = test.sort(
       (a, b) => Number(a.distance) - Number(b.distance)
     );
-    // console.log("YES?!", sortedByDistance);
   }
-
-  // console.log("HELLO!!!!", sortedByDistance);
 
   function renderSortingButtons() {
     return (
@@ -81,6 +98,7 @@ export default function CountryPage() {
             <button onClick={ButtonToggleSortDistance}>
               closest to your location
             </button>
+            <button onClick={updateLocation}>Update my location</button>
           </div>
         </Col>
       </Row>
@@ -99,14 +117,8 @@ export default function CountryPage() {
                     <Card.Body>
                       <Card.Title>{post.title}</Card.Title>
                       <Card.Text>{post.description}</Card.Text>
+                      <Card.Text>location adress :{post.adress}</Card.Text>
                       <Card.Img size='lg' src={post.imageUrl} alt='' />
-                      <Card.Text>location :{post.adress}</Card.Text>
-                      THE DISTANCE BETWEEN YOU AND THIS LOCATION IS:{" "}
-                      <p>
-                        latitude: {post.latitude},
-                        <br />
-                        longitude: {post.longitude}
-                      </p>
                       <Button varient='primary' size='lg'>
                         <Link to={`/locations/${post.id}/details`}>
                           Explore this location!
@@ -122,9 +134,9 @@ export default function CountryPage() {
                     <Card.Body>
                       <Card.Title>{post.title}</Card.Title>
                       <Card.Text>{post.description}</Card.Text>
+                      <Card.Text>location adress :{post.adress}</Card.Text>
                       <Card.Img size='lg' src={post.imageUrl} alt='' />
-                      <Card.Text>location :{post.adress}</Card.Text>
-                      THE DISTANCE BETWEEN YOU AND THIS LOCATION IS:{" "}
+                      The distance between you and this amazing spot is:{" "}
                       {getDistanceFromLatLonInKm(
                         userLocation.lat,
                         userLocation.lon,
@@ -132,11 +144,6 @@ export default function CountryPage() {
                         post.longitude
                       ).toFixed(2)}{" "}
                       km
-                      <p>
-                        latitude: {post.latitude},
-                        <br />
-                        longitude: {post.longitude}
-                      </p>
                       <Button varient='primary' size='lg'>
                         <Link to={`/locations/${post.id}/details`}>
                           Explore this location!
@@ -170,7 +177,8 @@ export default function CountryPage() {
   useEffect(() => {
     setpostDistanceArray(countryInfo.locationposts);
   }, [countryInfo]);
-  // console.log("WORKING?", array);
+
+  console.log("LATITUDE", latitude, "| LONGITUDE", longitude);
 
   return (
     <div>
