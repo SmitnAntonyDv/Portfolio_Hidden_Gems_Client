@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import "./App.css";
+import "./App.scss";
 
 import MessageBox from "./components/MessageBox";
 import { Switch, Route } from "react-router-dom";
@@ -28,22 +29,24 @@ function App() {
 
   return (
     <div className='App'>
-      <Toolbar />
-      <MessageBox />
-      <Switch>
-        <Route exact path='/' component={Homepage} />
-        <Route path='/testing' component={Other} />
-        <Route
-          exact
-          path='/locations/:countryId/posts'
-          component={CountryPage}
-        />
-        <Route path='/locations/:postId/details' component={DetailsPage} />
-        <Route path='/user/:userId/dashboard' component={DashboardPage} />
-        <Route path='/login' component={Login} />
-        <Route path='/signup' component={Signup} />
-        <Route path='/user/postlocation' component={PostPage} />
-      </Switch>
+      <div className='content-wrap'>
+        <Toolbar />
+        <MessageBox />
+        <Switch>
+          <Route exact path='/' component={Homepage} />
+          <Route path='/testing' component={Other} />
+          <Route
+            exact
+            path='/locations/:countryId/posts'
+            component={CountryPage}
+          />
+          <Route path='/locations/:postId/details' component={DetailsPage} />
+          <Route path='/user/:userId/dashboard' component={DashboardPage} />
+          <Route path='/login' component={Login} />
+          <Route path='/signup' component={Signup} />
+          <Route path='/user/postlocation' component={PostPage} />
+        </Switch>
+      </div>
       <Footer />
     </div>
   );
