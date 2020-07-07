@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCountryPosts } from "../store/countrypage/actions";
 import { selectSpecificCountryInfo } from "../store/countrypage/selectors";
 import CountryAPIcard from "../components/CountryAPIcard";
-import { getLocation, error, options } from "./PostPage";
+import { selectUser } from "../store/user/selector";
 
 import {
   Container,
@@ -20,11 +20,13 @@ export default function CountryPage() {
   const dispatch = useDispatch();
   const { countryId } = useParams();
   const countryInfo = useSelector(selectSpecificCountryInfo);
+  const userCoords = useSelector(selectUser);
+  const { latitude, longitude } = userCoords;
 
   const [postDistanceArray, setpostDistanceArray] = useState("");
   const [orderByDistance, setOrderByDitance] = useState(true);
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitutde] = useState("");
+  const [UPDlatitude, setLatitude] = useState("");
+  const [UPDlongitude, setLongitutde] = useState("");
 
   // haversine formula function
   function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
@@ -47,7 +49,20 @@ export default function CountryPage() {
   }
 
   //hardcoded UserLocation (Bali Denspar)
-  const userLocation = { lat: Number(-8.65629), lon: Number(115.222099) };
+  let userLocation;
+  if (!!latitude && !!longitude) {
+    userLocation = {
+      lat: Number(latitude),
+      lon: Number(longitude),
+    };
+  } else {
+    userLocation = {
+      lat: Number(UPDlatitude),
+      lon: Number(UPDlongitude),
+    };
+  }
+  // console.log("STILL WORKS?", userLocation);
+  console.log("LATITUDE", latitude, "| LONGITUDE", longitude);
 
   function ButtonToggleSortDistance() {
     setOrderByDitance(!orderByDistance);
@@ -95,10 +110,21 @@ export default function CountryPage() {
           <div>
             <button>Most liked</button>
             <button>Most Recent</button>
-            <button onClick={ButtonToggleSortDistance}>
-              closest to your location
-            </button>
+            {!!latitude || !!UPDlatitude ? (
+              <button onClick={ButtonToggleSortDistance}>
+                closest to YOUR location
+              </button>
+            ) : null}
             <button onClick={updateLocation}>Update my location</button>
+          </div>
+          <div>
+            <h3>
+              Welcome to the {countryInfo.name} page, please login or click
+              "update my location" to enable distance functionality. TODO: make
+              button display all the time but only clickable if logged in / if
+              have coords -> make tooltip explaining this and when hovering over
+              button have tooltip "to update their location"
+            </h3>
           </div>
         </Col>
       </Row>
@@ -177,8 +203,6 @@ export default function CountryPage() {
   useEffect(() => {
     setpostDistanceArray(countryInfo.locationposts);
   }, [countryInfo]);
-
-  console.log("LATITUDE", latitude, "| LONGITUDE", longitude);
 
   return (
     <div>

@@ -66,8 +66,6 @@ export default function PostPage() {
       options
     );
   }
-  // console.log(latitude);
-  // console.log(longitude);
 
   useEffect(() => {
     dispatch(getAdress(latitude, longitude));
