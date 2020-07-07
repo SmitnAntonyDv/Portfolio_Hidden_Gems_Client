@@ -15,20 +15,6 @@ export default function Toolbar() {
   const history = useHistory();
   const { userId } = useParams();
   const token = useSelector(selectToken);
-  // console.log("Which Country BISH?", country.id);
-  // console.log("WHAT MA HISTORY BISH", history.location.pathname);
-  // console.log("Who am I ? ", userId);
-
-  const match = matchPath(history.location.pathname, {
-    path: `/locations/:userId/details`,
-  });
-  //   console.log("who am I?", match.params.userId);
-  //   console.log("DA SOLUTION!???", match);
-  function userID() {
-    if (match.params.userId) {
-      return match.params.userId;
-    }
-  }
 
   const loginControls = token ? <LoggedIn /> : <LoggedOut />;
   const postIfLoggedIn = token ? (
@@ -41,24 +27,22 @@ export default function Toolbar() {
 
   function renderCountryButton() {
     if (history.location.pathname === `/locations/${postId}/details`) {
-      return <Link to={`/locations/${country.id}/posts`}>TESTIIIING !!!!</Link>;
+      return (
+        <Link to={`/locations/${country.id}/posts`}>
+          Explore {`${country.name}`}
+        </Link>
+      );
     } else {
       return <div>{null}</div>;
     }
   }
-  function renderCountrybtn() {
-    return <Link to={`/locations/${country.id}/posts`}>{country.name}</Link>;
-  }
-  console.log("THIS DATA!!!", postId);
+
   return (
     <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
       <Navbar.Brand href='/'>Explore Hidden Gems</Navbar.Brand>
       <Navbar.Toggle aria-controls='responsive-navbar-nav' />
       <Navbar.Collapse id='responsive-navbar-nav'>
         <Nav className='mr-auto'>{renderCountryButton()}</Nav>
-        <Nav>
-          <Nav.Link>{renderCountrybtn()}</Nav.Link>
-        </Nav>
         <Nav>
           {postIfLoggedIn}
           {loginControls}

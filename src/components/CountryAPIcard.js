@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCountryInfo } from "../store/countrypage/countryAPI/actions";
 import { selectCountryInfo } from "../store/countrypage/countryAPI/selector";
+import { Row, Col } from "react-bootstrap";
 
 export default function CountryAPIcard(props) {
   const dispatch = useDispatch();
@@ -14,9 +15,8 @@ export default function CountryAPIcard(props) {
 
   // console.log("CORRECT INFO?", info);
   return (
-    <div>
-      <h2>Hello I am the countryAPIcard</h2>
-      <div>
+    <Row>
+      <Col-12 style={{ alignItems: "justified" }}>
         <h2>{info.name} general country info</h2>
         <span>
           <p>Capital: {info.capital}</p>
@@ -29,7 +29,7 @@ export default function CountryAPIcard(props) {
           </p>
           <p>Their national callingCode is: +{info.callingCodes}</p>
         </span>
-      </div>
-    </div>
+      </Col-12>
+    </Row>
   );
 }

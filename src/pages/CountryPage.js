@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCountryPosts } from "../store/countrypage/actions";
 import { selectSpecificCountryInfo } from "../store/countrypage/selectors";
 import CountryAPIcard from "../components/CountryAPIcard";
+import { selectUser } from "../store/user/selector";
 
 import {
   Container,
@@ -13,15 +14,22 @@ import {
   Card,
   CardGroup,
   Button,
+  OverlayTrigger,
+  Tooltip,
 } from "react-bootstrap";
 
 export default function CountryPage() {
   const dispatch = useDispatch();
-  const countryInfo = useSelector(selectSpecificCountryInfo);
-  const [postDistanceArray, setpostDistanceArray] = useState("");
-  const [array, setArray] = useState("");
-  const [orderByDistance, setOrderByDitance] = useState(true);
   const { countryId } = useParams();
+  const countryInfo = useSelector(selectSpecificCountryInfo);
+  const userCoords = useSelector(selectUser);
+  const { latitude, longitude, token } = userCoords;
+
+  const [postDistanceArray, setpostDistanceArray] = useState("");
+  const [orderByDistance, setOrderByDitance] = useState(true);
+  const [UPDlatitude, setLatitude] = useState("");
+  const [UPDlongitude, setLongitutde] = useState("");
+  // console.log();
 
   // haversine formula function
   function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
@@ -44,12 +52,42 @@ export default function CountryPage() {
   }
 
   //hardcoded UserLocation (Bali Denspar)
-  const userLocation = { lat: Number(-8.65629), lon: Number(115.222099) };
+  let userLocation;
+  if (!!latitude && !!longitude) {
+    userLocation = {
+      lat: Number(latitude),
+      lon: Number(longitude),
+    };
+  } else {
+    userLocation = {
+      lat: Number(UPDlatitude),
+      lon: Number(UPDlongitude),
+    };
+  }
+  // console.log("STILL WORKS?", userLocation);
+  console.log("LATITUDE", latitude, "| LONGITUDE", longitude);
 
   function ButtonToggleSortDistance() {
     setOrderByDitance(!orderByDistance);
-    console.log("ITS ALIVE BABY!!!!");
   }
+
+  function updateUserLocation(pos) {
+    setLatitude(pos.coords.latitude);
+    setLongitutde(pos.coords.longitude);
+  }
+
+  function updateLocation() {
+    return navigator.geolocation.getCurrentPosition(
+      updateUserLocation,
+      error,
+      options
+    );
+  }
+
+  function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
+  const options = { enableHighAccuracy: true };
 
   //adds distance to the postLocationArray
   let sortedByDistance = [];
@@ -66,10 +104,7 @@ export default function CountryPage() {
     sortedByDistance = test.sort(
       (a, b) => Number(a.distance) - Number(b.distance)
     );
-    // console.log("YES?!", sortedByDistance);
   }
-
-  // console.log("HELLO!!!!", sortedByDistance);
 
   function renderSortingButtons() {
     return (
@@ -78,9 +113,39 @@ export default function CountryPage() {
           <div>
             <button>Most liked</button>
             <button>Most Recent</button>
-            <button onClick={ButtonToggleSortDistance}>
-              closest to your location
-            </button>
+            {!!latitude || !!UPDlatitude ? (
+              <button onClick={ButtonToggleSortDistance}>
+                closest to YOUR location
+              </button>
+            ) : null}
+            {!token ? (
+              <button onClick={updateLocation}>Update my location</button>
+            ) : (
+              <>
+                {["bottom"].map((placement) => (
+                  <OverlayTrigger
+                    key={placement}
+                    placement={placement}
+                    overlay={
+                      <Tooltip id={`tooltip-${placement}`}>
+                        increase accuracy
+                      </Tooltip>
+                    }
+                  >
+                    <button onClick={updateLocation}>Update my location</button>
+                  </OverlayTrigger>
+                ))}
+              </>
+            )}
+          </div>
+          <div>
+            <h3>
+              Welcome to the {countryInfo.name} page, please login or click
+              "update my location" to enable distance functionality. TODO: make
+              button display all the time but only clickable if logged in / if
+              have coords -> make tooltip explaining this and when hovering over
+              button have tooltip "to update their location"
+            </h3>
           </div>
         </Col>
       </Row>
@@ -99,14 +164,8 @@ export default function CountryPage() {
                     <Card.Body>
                       <Card.Title>{post.title}</Card.Title>
                       <Card.Text>{post.description}</Card.Text>
+                      <Card.Text>location adress :{post.adress}</Card.Text>
                       <Card.Img size='lg' src={post.imageUrl} alt='' />
-                      <Card.Text>location :{post.adress}</Card.Text>
-                      THE DISTANCE BETWEEN YOU AND THIS LOCATION IS:{" "}
-                      <p>
-                        latitude: {post.latitude},
-                        <br />
-                        longitude: {post.longitude}
-                      </p>
                       <Button varient='primary' size='lg'>
                         <Link to={`/locations/${post.id}/details`}>
                           Explore this location!
@@ -122,9 +181,9 @@ export default function CountryPage() {
                     <Card.Body>
                       <Card.Title>{post.title}</Card.Title>
                       <Card.Text>{post.description}</Card.Text>
+                      <Card.Text>location adress :{post.adress}</Card.Text>
                       <Card.Img size='lg' src={post.imageUrl} alt='' />
-                      <Card.Text>location :{post.adress}</Card.Text>
-                      THE DISTANCE BETWEEN YOU AND THIS LOCATION IS:{" "}
+                      The distance between you and this amazing spot is:{" "}
                       {getDistanceFromLatLonInKm(
                         userLocation.lat,
                         userLocation.lon,
@@ -132,11 +191,6 @@ export default function CountryPage() {
                         post.longitude
                       ).toFixed(2)}{" "}
                       km
-                      <p>
-                        latitude: {post.latitude},
-                        <br />
-                        longitude: {post.longitude}
-                      </p>
                       <Button varient='primary' size='lg'>
                         <Link to={`/locations/${post.id}/details`}>
                           Explore this location!
@@ -170,7 +224,6 @@ export default function CountryPage() {
   useEffect(() => {
     setpostDistanceArray(countryInfo.locationposts);
   }, [countryInfo]);
-  // console.log("WORKING?", array);
 
   return (
     <div>

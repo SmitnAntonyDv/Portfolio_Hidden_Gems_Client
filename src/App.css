@@ -29,6 +29,9 @@ a {
   color: white !important
   ;
 }
+div#responsive-navbar-nav.navbar-collapse.collapse {
+  float: left !important;
+}
 
 /* Styling the Homepage Herobanner */
 .heroBanner {
@@ -70,4 +73,9 @@ a {
 
 .card {
   min-width: 70vh !important;
+}
+
+/* hidding tooltip style*/
+.tooltipHidden {
+  display: none !important;
 }
