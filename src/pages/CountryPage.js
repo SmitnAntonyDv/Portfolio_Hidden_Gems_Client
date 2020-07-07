@@ -14,6 +14,8 @@ import {
   Card,
   CardGroup,
   Button,
+  OverlayTrigger,
+  Tooltip,
 } from "react-bootstrap";
 
 export default function CountryPage() {
@@ -21,12 +23,13 @@ export default function CountryPage() {
   const { countryId } = useParams();
   const countryInfo = useSelector(selectSpecificCountryInfo);
   const userCoords = useSelector(selectUser);
-  const { latitude, longitude } = userCoords;
+  const { latitude, longitude, token } = userCoords;
 
   const [postDistanceArray, setpostDistanceArray] = useState("");
   const [orderByDistance, setOrderByDitance] = useState(true);
   const [UPDlatitude, setLatitude] = useState("");
   const [UPDlongitude, setLongitutde] = useState("");
+  // console.log();
 
   // haversine formula function
   function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
@@ -115,7 +118,25 @@ export default function CountryPage() {
                 closest to YOUR location
               </button>
             ) : null}
-            <button onClick={updateLocation}>Update my location</button>
+            {!token ? (
+              <button onClick={updateLocation}>Update my location</button>
+            ) : (
+              <>
+                {["bottom"].map((placement) => (
+                  <OverlayTrigger
+                    key={placement}
+                    placement={placement}
+                    overlay={
+                      <Tooltip id={`tooltip-${placement}`}>
+                        increase accuracy
+                      </Tooltip>
+                    }
+                  >
+                    <button onClick={updateLocation}>Update my location</button>
+                  </OverlayTrigger>
+                ))}
+              </>
+            )}
           </div>
           <div>
             <h3>

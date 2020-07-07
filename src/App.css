@@ -74,3 +74,8 @@ div#responsive-navbar-nav.navbar-collapse.collapse {
 .card {
   min-width: 70vh !important;
 }
+
+/* hidding tooltip style*/
+.tooltipHidden {
+  display: none !important;
+}
