@@ -20,7 +20,6 @@ const backpackIcon = new Icon({
 });
 
 export default function Mymap(props) {
-  console.log("WHAT ARE MY PROPS", props);
   const { id, latitude, longitude, adress } = props;
   const User = useSelector(selectUser);
   const [togglePopup, setTogglePopup] = useState(false);
@@ -61,7 +60,6 @@ export default function Mymap(props) {
   function toggleUserTracking() {
     setToggleTracking(!toggleTracking);
     setTrackingBtnText(!trackingBtnText);
-    console.log(toggleTracking);
   }
   let trackOrNot;
   if (!!trackingBtnText) {
@@ -93,7 +91,8 @@ export default function Mymap(props) {
           ) : (
             []
           )}
-          {User.id || updatedLatitude ? (
+          {(User.id && !!toggleTracking) ||
+          (updatedLatitude && !!toggleTracking) ? (
             <Marker
               key={User.id}
               position={[userLocation.lat, userLocation.lon]}
