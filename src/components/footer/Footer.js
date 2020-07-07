@@ -7,20 +7,6 @@ export default function Footer() {
         <div className='row'>
           {/* Colum1 */}
           <div className='col'>
-            <h4>Logo</h4>
-            <ul className='list-unstyled'>
-              <li>
-                Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget,
-                imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices
-                mauris. Integer ante arcu, accumsan a, consectetuer eget,
-                posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper
-                ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat
-                pretium libero.
-              </li>
-            </ul>
-          </div>
-          {/* Colum2 */}
-          <div className='col'>
             <h4>About Us</h4>
             <ul className='list-unstyled'>
               <li>Head Office South-East Asia</li>
@@ -43,16 +29,6 @@ export default function Footer() {
             </ul>
           </div>
           {/* colum3 */}
-          <div className='col'>
-            <h4>Connect with us</h4>
-            <ul className='list-unstyled'>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
-          </div>
-          {/* colum4 */}
           <div className='col'>
             <h4>Connect with us</h4>
             <ul className='list-unstyled'>

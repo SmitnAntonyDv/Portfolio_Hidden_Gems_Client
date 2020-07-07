@@ -29,24 +29,23 @@ function App() {
 
   return (
     <div className='App'>
-      <div className='content-wrap'>
-        <Toolbar />
-        <MessageBox />
-        <Switch>
-          <Route exact path='/' component={Homepage} />
-          <Route path='/testing' component={Other} />
-          <Route
-            exact
-            path='/locations/:countryId/posts'
-            component={CountryPage}
-          />
-          <Route path='/locations/:postId/details' component={DetailsPage} />
-          <Route path='/user/:userId/dashboard' component={DashboardPage} />
-          <Route path='/login' component={Login} />
-          <Route path='/signup' component={Signup} />
-          <Route path='/user/postlocation' component={PostPage} />
-        </Switch>
-      </div>
+      <Toolbar />
+      <MessageBox />
+      <Switch>
+        <Route exact path='/' component={Homepage} />
+        <Route path='/testing' component={Other} />
+        <Route
+          exact
+          path='/locations/:countryId/posts'
+          component={CountryPage}
+        />
+        <Route path='/locations/:postId/details' component={DetailsPage} />
+        <Route path='/user/:userId/dashboard' component={DashboardPage} />
+        <Route path='/login' component={Login} />
+        <Route path='/signup' component={Signup} />
+        <Route path='/user/postlocation' component={PostPage} />
+      </Switch>
+
       <Footer />
     </div>
   );

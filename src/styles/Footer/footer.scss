@@ -5,6 +5,8 @@
   position: relative;
   bottom: 0;
   width: 100%;
+  flex-flow: row nowrap;
+  margin-top: auto;
 }
 .page-container {
   display: flex;
