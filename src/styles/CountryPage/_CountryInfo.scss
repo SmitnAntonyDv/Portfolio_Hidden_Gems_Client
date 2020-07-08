@@ -1,30 +1,27 @@
-// div.countryAPI.card {
-//   background-color: rgb(245, 242, 216);
-// }
 div.APIcard.card-group {
   margin: 5vh;
-}
-
-div.APIcountryInfo.card {
   border: thin solid #7e783a;
 }
+
 h2.general-info-title {
   font-size: 4vh;
   margin-bottom: 1.5vh;
 }
-div.APIcard {
-  border: thin solid #7e783a;
-}
 
-div.Flag.card {
+div.api-country-info-body-text {
+  text-align: justify;
+  padding-left: 3vh;
+  font-size: 1.8vh;
+  line-height: 1.8vh;
+}
+div.flagpicture {
   align-items: center;
-  background-color: black;
+}
+hr.divide-line {
+  align-items: stretch;
 }
 img.countryFlag {
   max-width: 25vh;
   height: auto;
+  border: thin black solid;
 }
-
-// .APIcountryInfo {
-//   text-align: justify;
-// }
