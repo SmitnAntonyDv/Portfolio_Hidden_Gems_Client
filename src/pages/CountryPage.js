@@ -111,15 +111,16 @@ export default function CountryPage() {
       <Row>
         <Col>
           <div>
-            <button>Most liked</button>
-            <button>Most Recent</button>
+            <Button className='sortButton'>Most liked</Button>
             {!!latitude || !!UPDlatitude ? (
-              <button onClick={ButtonToggleSortDistance}>
+              <Button className='sortButton' onClick={ButtonToggleSortDistance}>
                 closest to YOUR location
-              </button>
+              </Button>
             ) : null}
             {!token ? (
-              <button onClick={updateLocation}>Update my location</button>
+              <Button className='sortButton' onClick={updateLocation}>
+                Update my location
+              </Button>
             ) : (
               <>
                 {["bottom"].map((placement) => (
@@ -132,7 +133,9 @@ export default function CountryPage() {
                       </Tooltip>
                     }
                   >
-                    <button onClick={updateLocation}>Update my location</button>
+                    <Button className='sortButton' onClick={updateLocation}>
+                      Update my location
+                    </Button>
                   </OverlayTrigger>
                 ))}
               </>

@@ -20,8 +20,7 @@ export default function Footer() {
               imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices
               mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere
               ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum
-              rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium
-              libero
+              rutrum nunc.
             </li>
           </ul>
         </div>
