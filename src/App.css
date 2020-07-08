@@ -36,16 +36,6 @@ div#responsive-navbar-nav.navbar-collapse.collapse {
   float: left !important;
 }
 
-/* styling homebuttons */
-
-.homePageButtons {
-  width: 40%;
-  padding: 2vh;
-  background-color: #f7e4a1 !important;
-  color: black !important;
-  /* margin: 1.2vh; */
-}
-
 /* leaflet map styling */
 .leaflet-container {
   width: 100%;
