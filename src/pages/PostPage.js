@@ -73,7 +73,7 @@ export default function PostPage() {
 
   return (
     <div>
-      <Container>
+      <Container fluid>
         <h2>Please fill in all fields to share your post</h2>
         <Form as={Col} md={{ span: 6, offset: 3 }} className='mt-5'>
           <Form.Group>
