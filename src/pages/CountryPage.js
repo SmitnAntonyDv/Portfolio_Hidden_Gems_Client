@@ -141,10 +141,7 @@ export default function CountryPage() {
           <div>
             <h3>
               Welcome to the {countryInfo.name} page, please login or click
-              "update my location" to enable distance functionality. TODO: make
-              button display all the time but only clickable if logged in / if
-              have coords -> make tooltip explaining this and when hovering over
-              button have tooltip "to update their location"
+              "update my location" to enable distance functionality.
             </h3>
           </div>
         </Col>
