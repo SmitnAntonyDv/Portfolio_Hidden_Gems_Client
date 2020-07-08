@@ -183,19 +183,21 @@ export default function CountryPage() {
                       <Card.Text>{post.description}</Card.Text>
                       <Card.Text>location adress :{post.adress}</Card.Text>
                       <Card.Img size='lg' src={post.imageUrl} alt='' />
-                      The distance between you and this amazing spot is:{" "}
-                      {getDistanceFromLatLonInKm(
-                        userLocation.lat,
-                        userLocation.lon,
-                        post.latitude,
-                        post.longitude
-                      ).toFixed(2)}{" "}
-                      km
                       <Button varient='primary' size='lg'>
                         <Link to={`/locations/${post.id}/details`}>
                           Explore this location!
                         </Link>
                       </Button>
+                      <Card.Text>
+                        The distance between you and this amazing spot is:{" "}
+                        {getDistanceFromLatLonInKm(
+                          userLocation.lat,
+                          userLocation.lon,
+                          post.latitude,
+                          post.longitude
+                        ).toFixed(2)}{" "}
+                        km
+                      </Card.Text>
                     </Card.Body>
                   </Card>
                 );

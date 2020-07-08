@@ -31,22 +31,23 @@ function App() {
     <div className='App'>
       <Toolbar />
       <MessageBox />
-      <Switch>
-        <Route exact path='/' component={Homepage} />
-        <Route path='/testing' component={Other} />
-        <Route
-          exact
-          path='/locations/:countryId/posts'
-          component={CountryPage}
-        />
-        <Route path='/locations/:postId/details' component={DetailsPage} />
-        <Route path='/user/:userId/dashboard' component={DashboardPage} />
-        <Route path='/login' component={Login} />
-        <Route path='/signup' component={Signup} />
-        <Route path='/user/postlocation' component={PostPage} />
-      </Switch>
-
-      <Footer />
+      <span className='content'>
+        <Switch>
+          <Route exact path='/' component={Homepage} />
+          <Route path='/testing' component={Other} />
+          <Route
+            exact
+            path='/locations/:countryId/posts'
+            component={CountryPage}
+          />
+          <Route path='/locations/:postId/details' component={DetailsPage} />
+          <Route path='/user/:userId/dashboard' component={DashboardPage} />
+          <Route path='/login' component={Login} />
+          <Route path='/signup' component={Signup} />
+          <Route path='/user/postlocation' component={PostPage} />
+        </Switch>
+      </span>
+      <Footer className='negative-footer' />
     </div>
   );
 }

@@ -11,16 +11,19 @@
 .footer-header {
   border-bottom: 0.06em solid #c7c7c7;
   font-size: 2rem;
+  text-transform: uppercase;
 }
 
 .footer-social {
-  padding: 0 1em;
   display: table;
 }
 .Icons-horizontal-list-unstyled li {
   display: inline;
-  margin-left: 1em;
+  margin-left: 2vh;
   font-size: 3vh;
+}
+.Icons-horizontal-list-unstyled li svg {
+  margin-left: 1em;
   cursor: pointer;
 }
 .Icons-horizontal-list-unstyled li :hover {
@@ -34,4 +37,8 @@
 }
 .fake-Link:hover {
   text-decoration: underline;
+}
+
+.negative-footer {
+  flex-shrink: 0;
 }

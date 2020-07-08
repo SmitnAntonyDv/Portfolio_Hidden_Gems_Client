@@ -36,12 +36,12 @@ export default function Footer() {
         </div>
         {/* colum3 */}
         <div className='col-xs-12 col-sm-6 col-md-3'>
-          <h4 className='footer-header'>About Us</h4>
+          <h4 className='footer-header'>Contact Info</h4>
           <ul className='list-unstyled'>
             <li>Head Office South-East Asia</li>
             <li>+65-992-5309-5</li>
             <li>Singapore</li>
-            <li>Ang mo kio street 82-2</li>
+            <li>10 Bayfront Ave, Singapore 018956</li>
           </ul>
         </div>
         {/* colum4 */}
