@@ -124,7 +124,7 @@ export default function CountryPage() {
               </Button>
             ) : (
               <>
-                {["bottom"].map((placement) => (
+                {["top"].map((placement) => (
                   <OverlayTrigger
                     key={placement}
                     placement={placement}
@@ -231,11 +231,7 @@ export default function CountryPage() {
       // console.log("No info yet chief");
       return <h2>Loading Country info . . .</h2>;
     } else {
-      return (
-        <Row>
-          <CountryAPIcard name={countryInfo.name} />
-        </Row>
-      );
+      return <CountryAPIcard name={countryInfo.name} />;
     }
   }
 
@@ -247,12 +243,12 @@ export default function CountryPage() {
   }, [countryInfo]);
 
   return (
-    <div>
+    <>
       <Container fluid>
         {renderSortingButtons()}
         {renderCountryPost()}
         {renderCountryInfo()}
       </Container>
-    </div>
+    </>
   );
 }

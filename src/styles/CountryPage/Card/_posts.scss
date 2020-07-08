@@ -1,3 +1,7 @@
+div.countryCard-posts.card {
+  background-color: rgb(245, 242, 216);
+}
+
 div.card {
   min-width: 65vh;
   // margin: 5vh;
@@ -7,6 +11,7 @@ div.card {
 div.card-body {
   border: thin solid #7e783a;
   padding: 3vh;
+  background-color: white;
 }
 
 div.card-title.h5 {
@@ -15,6 +20,7 @@ div.card-title.h5 {
 p.card-text {
   font-size: 1.9vh;
   align-items: baseline;
+  margin-bottom: 3vh;
 }
 button.detailButton.btn.btn-primary.btn-lg {
   margin: 2vh;
