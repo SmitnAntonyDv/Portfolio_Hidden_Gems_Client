@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FetchWeather } from "../../store/weather/actions";
 import { selectWeather } from "../../store/weather/selectors";
+import { WiDegrees } from "react-icons/wi";
 import moment from "moment";
+import { Col } from "react-bootstrap";
 
 export default function WeatherInfo(props) {
   const weatherData = useSelector(selectWeather);
@@ -11,26 +13,31 @@ export default function WeatherInfo(props) {
   const { main, winds, weather, sys, clouds } = weatherData;
   // K-273.15. = Celcius
   const convert = 273.15;
-
+  if (main) {
+    console.log("This is?!", moment.unix(1594248172)._d);
+  }
   function renderWeatherInfo() {
-    // console.log(main.temp);
     if (main) {
       console.log(main.temp);
       return (
-        <div>
-          <h2>
-            The weather conditions at this location
-            <p>
-              Local Temperature at this location is:{" "}
-              {(main.temp - convert).toFixed(1)} degrees
+        <div className='weather-content-wrapper'>
+          <div className='weather-content-info'>
+            <Col md={6} className='temp'>
+              <strong>Local Temperature is</strong>:{" "}
+              {(main.temp - convert).toFixed(1)} &#x2103;
               <br />
-              Local Temperature feels like{" "}
-              {(main.feels_like - convert).toFixed(1)} degrees
-            </p>
-            <p>Local humidity is: {main.humidity}%</p>
-            <div> local Weather description: {weather[0].description}</div>
-            <p>TODO: display sunrise / sunset times with moment.js</p>
-          </h2>
+              <strong>feels like </strong>:{" "}
+              {(main.feels_like - convert).toFixed(1)} &#x2103;
+            </Col>
+            <Col md={6} className='forecast'>
+              <strong>Local humidity is</strong>: {main.humidity}%
+              <br />
+              <strong>local Weather </strong>: {weather[0].description}
+              <br />
+              <strong>Chance on clouds</strong>:{clouds.all} %
+              <br />
+            </Col>
+          </div>
         </div>
       );
     }
@@ -39,10 +46,5 @@ export default function WeatherInfo(props) {
   useEffect(() => {
     dispatch(FetchWeather(Number(latitude), Number(longitude)));
   }, []);
-  return (
-    <div>
-      <h1>I AM A WEATHER COMPONENT</h1>
-      {renderWeatherInfo()}
-    </div>
-  );
+  return <div>{renderWeatherInfo()}</div>;
 }

@@ -45,6 +45,14 @@ export default function DetailsPage() {
           <FaMapMarkerAlt /> {adress}
         </Col>
       </Row>
+      <hr />
+      <Row>
+        <Col className='weather-border'>
+          <h2>Local Weather Conditions</h2>
+
+          <WeatherInfo latitude={latitude} longitude={longitude} />
+        </Col>
+      </Row>
       <Row>
         <Col className='map-col'>
           <Mymap
@@ -53,9 +61,6 @@ export default function DetailsPage() {
             adress={adress}
             id={postData.id}
           />
-        </Col>
-        <Col className='weather-col'>
-          <WeatherInfo latitude={latitude} longitude={longitude} />
         </Col>
       </Row>
     </Container>
