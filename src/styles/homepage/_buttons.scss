@@ -1,0 +1,25 @@
+/* styling homebuttons */
+
+.homepageButtonWrapper {
+  margin-top: 1vh;
+  margin-bottom: 10vh;
+}
+
+.homePageButtons {
+  width: 40%;
+
+  margin: 0.5vh;
+}
+button.homePageButtons.btn.btn-primary.btn-lg {
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  box-shadow: 3px 3px 7px 0px #899599;
+  background: linear-gradient(to bottom, #f7e4a1 5%, #dbca8d 100%);
+  background-color: #f7e4a1;
+  color: black;
+  text-shadow: 2px 2px 1px white;
+}
+button.homePageButtons.btn.btn-primary.btn-lg:hover {
+  background: linear-gradient(to bottom, #dbca8d 5%, #f7e4a1 100%);
+  background-color: #dbca8d;
+}

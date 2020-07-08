@@ -36,38 +36,6 @@ div#responsive-navbar-nav.navbar-collapse.collapse {
   float: left !important;
 }
 
-/* Styling the Homepage Herobanner */
-.heroBanner {
-  width: 100%;
-  height: 38vh;
-  background-image: url("https://images.pexels.com/photos/3145154/pexels-photo-3145154.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-  background-position: center center;
-  background-size: cover;
-}
-
-.hero-text {
-  text-align: center;
-  position: relative;
-  top: 18%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 4vh;
-}
-
-/* styling homebuttons */
-
-.homePageButtons {
-  width: 40%;
-  padding: 2vh;
-  background-color: #f7e4a1 !important;
-  color: black !important;
-  /* margin: 1.2vh; */
-}
-
 /* leaflet map styling */
 .leaflet-container {
   width: 100%;

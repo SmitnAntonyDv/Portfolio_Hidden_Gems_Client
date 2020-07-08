@@ -46,10 +46,8 @@ export default function Homepage() {
       <div className='heroBanner'>
         <h1 className='hero-text'>What will you explore next?</h1>
       </div>
-      <Container fluid>
-        <span className='homepageButtonWrapper'>
-          <div className='homepageButton'>{renderData()}</div>
-        </span>
+      <Container className='homepageButtonWrapper' fluid>
+        <div className='homepageButton'>{renderData()}</div>
       </Container>
     </div>
   );
