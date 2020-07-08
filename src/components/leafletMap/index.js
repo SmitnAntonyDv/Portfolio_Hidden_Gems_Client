@@ -102,12 +102,14 @@ export default function Mymap(props) {
   console.log("CURRENT LON", lon);
   return (
     <div>
-      <Button className='toggleTrack' onClick={toggleUserTracking}>
-        {trackOrNot}
-      </Button>
-      <Button className='toggleTrack' onClick={toggleUserCurrentLoc}>
-        Show Current Position
-      </Button>
+      <div className='mapbuttons'>
+        <Button className='toggleTrack' onClick={toggleUserTracking}>
+          {trackOrNot}
+        </Button>
+        <Button className='toggleTrack' onClick={toggleUserCurrentLoc}>
+          Show Current Position
+        </Button>
+      </div>
       {props.id ? (
         <Map center={[latitude, longitude]} zoom={12}>
           <TileLayer
