@@ -1,0 +1,35 @@
+div.card {
+  min-width: 65vh;
+  // margin: 5vh;
+  padding: 5vh;
+  border: none;
+}
+div.card-body {
+  border: thin solid #7e783a;
+  padding: 3vh;
+}
+
+div.card-title.h5 {
+  font-size: 4vh;
+}
+p.card-text {
+  font-size: 1.9vh;
+  align-items: baseline;
+}
+button.detailButton.btn.btn-primary.btn-lg {
+  margin: 2vh;
+  padding: 2vh;
+  width: 45%;
+  background: linear-gradient(to bottom, #bf7b41 5%, #cf9c77 100%);
+  background-color: #cf9c77;
+  box-shadow: 3px 3px 7px 0px #899599;
+}
+
+button.detailButton.btn.btn-primary.btn-lg:hover {
+  background: linear-gradient(to bottom, #cf9c77 5%, #bf7b41 100%);
+  background-color: #bf7b41;
+}
+button.detailButton.btn.btn-primary.btn-lg:active {
+  position: relative;
+  top: 0.2vh;
+}

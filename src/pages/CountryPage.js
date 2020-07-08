@@ -5,6 +5,7 @@ import { fetchCountryPosts } from "../store/countrypage/actions";
 import { selectSpecificCountryInfo } from "../store/countrypage/selectors";
 import CountryAPIcard from "../components/CountryAPIcard";
 import { selectUser } from "../store/user/selector";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 import {
   Container,
@@ -162,11 +163,21 @@ export default function CountryPage() {
                 return (
                   <Card key={post.id} className='countryCard-posts'>
                     <Card.Body>
-                      <Card.Title>{post.title}</Card.Title>
+                      <Card.Title className='card-Title'>
+                        {post.title}
+                      </Card.Title>
+                      <hr />
                       <Card.Text>{post.description}</Card.Text>
-                      <Card.Text>location adress :{post.adress}</Card.Text>
+                      <Card.Text>
+                        <FaMapMarkerAlt /> {post.adress}
+                      </Card.Text>
+                      <hr />
                       <Card.Img size='lg' src={post.imageUrl} alt='' />
-                      <Button varient='primary' size='lg'>
+                      <Button
+                        varient='primary'
+                        size='lg'
+                        className='detailButton'
+                      >
                         <Link to={`/locations/${post.id}/details`}>
                           Explore this location!
                         </Link>
@@ -180,10 +191,18 @@ export default function CountryPage() {
                   <Card key={post.id}>
                     <Card.Body>
                       <Card.Title>{post.title}</Card.Title>
+                      <hr />
                       <Card.Text>{post.description}</Card.Text>
-                      <Card.Text>location adress :{post.adress}</Card.Text>
+                      <Card.Text>
+                        <FaMapMarkerAlt /> {post.adress}
+                      </Card.Text>
+                      <hr />
                       <Card.Img size='lg' src={post.imageUrl} alt='' />
-                      <Button varient='primary' size='lg'>
+                      <Button
+                        varient='primary'
+                        size='lg'
+                        className='detailButton'
+                      >
                         <Link to={`/locations/${post.id}/details`}>
                           Explore this location!
                         </Link>
@@ -213,9 +232,9 @@ export default function CountryPage() {
       return <h2>Loading Country info . . .</h2>;
     } else {
       return (
-        <div>
+        <Row>
           <CountryAPIcard name={countryInfo.name} />
-        </div>
+        </Row>
       );
     }
   }
