@@ -1,16 +1,4 @@
-/* styling homebuttons */
-
-.homepageButtonWrapper {
-  margin-top: 1vh;
-  margin-bottom: 10vh;
-}
-
-.homePageButtons {
-  width: 40%;
-
-  margin: 0.5vh;
-}
-button.homePageButtons.btn.btn-primary.btn-lg {
+button.sortButton.btn.btn-primary {
   padding-top: 2vh;
   padding-bottom: 2vh;
   box-shadow: 3px 3px 7px 0px #899599;
@@ -18,12 +6,14 @@ button.homePageButtons.btn.btn-primary.btn-lg {
   background-color: #f7e4a1;
   color: black;
   text-shadow: 2px 2px 1px white;
+  margin: 8vh 5vh 2vh 2vh;
+  width: 25%;
 }
-button.homePageButtons.btn.btn-primary.btn-lg:hover {
+button.sortButton.btn.btn-primary:hover {
   background: linear-gradient(to bottom, #dbca8d 5%, #f7e4a1 100%);
   background-color: #dbca8d;
 }
-button.homePageButtons.btn.btn-primary.btn-lg:active {
+button.sortButton.btn.btn-primary:active {
   position: relative;
   top: 0.2vh;
 }

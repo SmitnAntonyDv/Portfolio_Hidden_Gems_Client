@@ -1,8 +1,9 @@
 .App {
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   min-height: 100vh;
   text-align: center;
+  background-color: rgb(245, 242, 216);
 }
 
 /* hiding LI bullets */
@@ -40,10 +41,6 @@ div#responsive-navbar-nav.navbar-collapse.collapse {
 .leaflet-container {
   width: 100%;
   height: 50vh;
-}
-
-.card {
-  min-width: 70vh !important;
 }
 
 /* hidding tooltip style*/

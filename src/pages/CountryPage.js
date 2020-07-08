@@ -5,6 +5,7 @@ import { fetchCountryPosts } from "../store/countrypage/actions";
 import { selectSpecificCountryInfo } from "../store/countrypage/selectors";
 import CountryAPIcard from "../components/CountryAPIcard";
 import { selectUser } from "../store/user/selector";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 import {
   Container,
@@ -111,18 +112,19 @@ export default function CountryPage() {
       <Row>
         <Col>
           <div>
-            <button>Most liked</button>
-            <button>Most Recent</button>
+            <Button className='sortButton'>Most liked</Button>
             {!!latitude || !!UPDlatitude ? (
-              <button onClick={ButtonToggleSortDistance}>
+              <Button className='sortButton' onClick={ButtonToggleSortDistance}>
                 closest to YOUR location
-              </button>
+              </Button>
             ) : null}
             {!token ? (
-              <button onClick={updateLocation}>Update my location</button>
+              <Button className='sortButton' onClick={updateLocation}>
+                Update my location
+              </Button>
             ) : (
               <>
-                {["bottom"].map((placement) => (
+                {["top"].map((placement) => (
                   <OverlayTrigger
                     key={placement}
                     placement={placement}
@@ -132,7 +134,9 @@ export default function CountryPage() {
                       </Tooltip>
                     }
                   >
-                    <button onClick={updateLocation}>Update my location</button>
+                    <Button className='sortButton' onClick={updateLocation}>
+                      Update my location
+                    </Button>
                   </OverlayTrigger>
                 ))}
               </>
@@ -159,11 +163,21 @@ export default function CountryPage() {
                 return (
                   <Card key={post.id} className='countryCard-posts'>
                     <Card.Body>
-                      <Card.Title>{post.title}</Card.Title>
+                      <Card.Title className='card-Title'>
+                        {post.title}
+                      </Card.Title>
+                      <hr />
                       <Card.Text>{post.description}</Card.Text>
-                      <Card.Text>location adress :{post.adress}</Card.Text>
+                      <Card.Text>
+                        <FaMapMarkerAlt /> {post.adress}
+                      </Card.Text>
+                      <hr />
                       <Card.Img size='lg' src={post.imageUrl} alt='' />
-                      <Button varient='primary' size='lg'>
+                      <Button
+                        varient='primary'
+                        size='lg'
+                        className='detailButton'
+                      >
                         <Link to={`/locations/${post.id}/details`}>
                           Explore this location!
                         </Link>
@@ -177,10 +191,18 @@ export default function CountryPage() {
                   <Card key={post.id}>
                     <Card.Body>
                       <Card.Title>{post.title}</Card.Title>
+                      <hr />
                       <Card.Text>{post.description}</Card.Text>
-                      <Card.Text>location adress :{post.adress}</Card.Text>
+                      <Card.Text>
+                        <FaMapMarkerAlt /> {post.adress}
+                      </Card.Text>
+                      <hr />
                       <Card.Img size='lg' src={post.imageUrl} alt='' />
-                      <Button varient='primary' size='lg'>
+                      <Button
+                        varient='primary'
+                        size='lg'
+                        className='detailButton'
+                      >
                         <Link to={`/locations/${post.id}/details`}>
                           Explore this location!
                         </Link>
@@ -209,11 +231,7 @@ export default function CountryPage() {
       // console.log("No info yet chief");
       return <h2>Loading Country info . . .</h2>;
     } else {
-      return (
-        <div>
-          <CountryAPIcard name={countryInfo.name} />
-        </div>
-      );
+      return <CountryAPIcard name={countryInfo.name} />;
     }
   }
 
@@ -225,12 +243,12 @@ export default function CountryPage() {
   }, [countryInfo]);
 
   return (
-    <div>
+    <>
       <Container fluid>
         {renderSortingButtons()}
         {renderCountryPost()}
         {renderCountryInfo()}
       </Container>
-    </div>
+    </>
   );
 }
