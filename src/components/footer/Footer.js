@@ -5,11 +5,12 @@ import {
   FaInstagram,
   FaTwitter,
 } from "react-icons/fa";
+import { Container, Row } from "react-bootstrap";
 
 export default function Footer() {
   return (
-    <div className='main-footer'>
-      <div className='row'>
+    <Container className='main-footer' fluid>
+      <Row>
         {/* Colum1 */}
         <div className='col-xs-12 col-sm-6 col-md-3'>
           <h4 className='footer-header'>About Us</h4>
@@ -47,32 +48,30 @@ export default function Footer() {
         <div className='col-xs-12 col-sm-6 col-md-3'>
           <h4 className='footer-header'>Connect</h4>
           <div className='footer-social'>
-            <div className='icons-horizontal'>
-              <ul className='list-unstyled'>
-                <li>
-                  <FaFacebook />
-                </li>
-                <li>
-                  <FaGooglePlusG />
-                </li>
-                <li>
-                  <FaInstagram />
-                </li>
-                <li>
-                  <FaTwitter />
-                </li>
-              </ul>
-            </div>
+            <ul className='Icons-horizontal-list-unstyled'>
+              <li>
+                <FaFacebook />
+              </li>
+              <li>
+                <FaGooglePlusG />
+              </li>
+              <li>
+                <FaInstagram />
+              </li>
+              <li>
+                <FaTwitter />
+              </li>
+            </ul>
           </div>
         </div>
-      </div>
+      </Row>
       <hr />
-      <div className='row'>
+      <Row>
         <p className='col-sm'>
           &copy;2020 Hidden Gems Inc | all rights reserved | Terms of use |
           Privacy & cookies
         </p>
-      </div>
-    </div>
+      </Row>
+    </Container>
   );
 }
