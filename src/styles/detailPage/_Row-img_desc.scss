@@ -1,16 +1,24 @@
 div.row-picture-and-description.row {
-  margin-top: 8vh;
   margin-left: 2vh;
   margin-right: 2vh;
-  border: thin solid #7e783a; //might get rid of this after styling - easier to see now how the styling is.
+  //   border: thin solid #7e783a; //might get rid of this after styling - easier to see now how the styling is.
+}
+
+//img
+div.details-image.col-md-8 {
+  padding-top: 1rem;
 }
 
 //text-box
+div.info-col.col-md-4 {
+  //   padding: 2rem;
+  //   border: thin solid #7e783a;
+}
 h4.info-col-title {
   padding-top: 1rem;
 }
 p.description {
   text-align: justify;
-  padding: 1rem;
+
   font-size: 1.2rem;
 }

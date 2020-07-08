@@ -30,7 +30,9 @@ export default function DetailsPage() {
   return (
     <Container className='detailpage-wrapper' fluid>
       <Row>
-        <div className='detailpage-title'>{title}</div>
+        <Col className='detailpage-title'>
+          <div>{title}</div>
+        </Col>
       </Row>
       <Row className='row-picture-and-description'>
         <Col md={8} className='details-image'>
@@ -38,6 +40,7 @@ export default function DetailsPage() {
         </Col>
         <Col md={4} className='info-col'>
           <h4 className='info-col-title'>Why this is a must visit!</h4>
+          <hr />
           <p className='description'>{description}</p>
           <FaMapMarkerAlt /> {adress}
         </Col>
