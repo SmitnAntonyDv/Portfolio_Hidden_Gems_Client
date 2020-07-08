@@ -50,11 +50,11 @@ export default function DetailsPage() {
         <Col className='weather-border'>
           <h2>Local Weather Conditions</h2>
 
-          <WeatherInfo latitude={latitude} longitude={longitude} />
+          {/* <WeatherInfo latitude={latitude} longitude={longitude} /> */}
         </Col>
       </Row>
       <Row>
-        <Col className='map-col'>
+        <Col className='map-col-leaflet'>
           <Mymap
             latitude={latitude}
             longitude={longitude}

@@ -1,0 +1,19 @@
+button.toggleTrack.btn.btn-primary {
+  padding-bottom: 2vh;
+  box-shadow: 3px 3px 7px 0px #899599;
+  background: linear-gradient(to bottom, #f7e4a1 5%, #dbca8d 100%);
+  background-color: #f7e4a1;
+  color: black;
+  text-shadow: 2px 2px 1px white;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  width: 25%;
+}
+button.toggleTrack.btn.btn-primary:hover {
+  background: linear-gradient(to bottom, #dbca8d 5%, #f7e4a1 100%);
+  background-color: #dbca8d;
+}
+button.toggleTrack.btn.btn-primary:active {
+  position: relative;
+  top: 0.2vh;
+}

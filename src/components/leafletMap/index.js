@@ -70,7 +70,9 @@ export default function Mymap(props) {
 
   return (
     <div>
-      <Button onClick={toggleUserTracking}>{trackOrNot}</Button>
+      <Button className='toggleTrack' onClick={toggleUserTracking}>
+        {trackOrNot}
+      </Button>
       {props.id ? (
         <Map center={[latitude, longitude]} zoom={12}>
           <TileLayer
