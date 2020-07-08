@@ -1,0 +1,16 @@
+div.row-picture-and-description.row {
+  margin-top: 8vh;
+  margin-left: 2vh;
+  margin-right: 2vh;
+  border: thin solid #7e783a; //might get rid of this after styling - easier to see now how the styling is.
+}
+
+//text-box
+h4.info-col-title {
+  padding-top: 1rem;
+}
+p.description {
+  text-align: justify;
+  padding: 1rem;
+  font-size: 1.2rem;
+}

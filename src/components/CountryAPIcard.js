@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCountryInfo } from "../store/countrypage/countryAPI/actions";
 import { selectCountryInfo } from "../store/countrypage/countryAPI/selector";
-import { CardGroup, Card } from "react-bootstrap";
+import { CardGroup, Card, Image } from "react-bootstrap";
 
 export default function CountryAPIcard(props) {
   const dispatch = useDispatch();
@@ -19,19 +19,31 @@ export default function CountryAPIcard(props) {
       <Card className='APIcountryInfo'>
         <h2 className='general-info-title'> General {info.name} Info</h2>
         <hr />
-        <p>Capital: {info.capital}</p>
-        <p>Population: {info.population}</p>
-        <p>
-          {info.name} is located in {info.subregion}
-        </p>
-        <p>
-          {info.name} has the timezone(s): {info.timezones}
-        </p>
-        <p>Their national callingCode is: +{info.callingCodes}</p>
+        <div className='api-country-info-body-text'>
+          <p>
+            <strong>Capital</strong>: {info.capital}
+          </p>
+          <p>
+            <strong>Population</strong>: {info.population}
+          </p>
+          <p>
+            <strong>located in</strong>: {info.subregion}
+          </p>
+          <p>
+            <strong>timezone(s)</strong>: {info.timezones}
+          </p>
+          <p>
+            <strong>national callingCode </strong>: +{info.callingCodes}
+          </p>
+        </div>
       </Card>
 
       <Card className='Flag'>
-        <img className='countryFlag' src={info.flag} />
+        <h2>National Flag</h2>
+        <hr className='divide-line' />
+        <div className='flagpicture'>
+          <Image className='countryFlag' src={info.flag} />
+        </div>
       </Card>
     </CardGroup>
   );

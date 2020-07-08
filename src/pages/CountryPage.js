@@ -173,24 +173,26 @@ export default function CountryPage() {
                       </Card.Text>
                       <hr />
                       <Card.Img size='lg' src={post.imageUrl} alt='' />
-                      <Button
-                        varient='primary'
-                        size='lg'
-                        className='detailButton'
-                      >
-                        <Link to={`/locations/${post.id}/details`}>
+                      <Link to={`/locations/${post.id}/details`}>
+                        <Button
+                          varient='primary'
+                          size='lg'
+                          className='detailButton'
+                        >
                           Explore this location!
-                        </Link>
-                      </Button>
+                        </Button>
+                      </Link>
                     </Card.Body>
                   </Card>
                 );
               })
             : sortedByDistance.map((post) => {
                 return (
-                  <Card key={post.id}>
+                  <Card key={post.id} className='countryCard-posts'>
                     <Card.Body>
-                      <Card.Title>{post.title}</Card.Title>
+                      <Card.Title className='card-Title'>
+                        {post.title}
+                      </Card.Title>
                       <hr />
                       <Card.Text>{post.description}</Card.Text>
                       <Card.Text>
