@@ -6,6 +6,7 @@ import { selectSpecificCountryInfo } from "../store/countrypage/selectors";
 import CountryAPIcard from "../components/CountryAPIcard";
 import { selectUser } from "../store/user/selector";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import { AiFillLike } from "react-icons/ai";
 
 import {
   Container,
@@ -66,7 +67,7 @@ export default function CountryPage() {
     };
   }
   // console.log("STILL WORKS?", userLocation);
-  console.log("LATITUDE", latitude, "| LONGITUDE", longitude);
+  // console.log("LATITUDE", latitude, "| LONGITUDE", longitude);
 
   function ButtonToggleSortDistance() {
     setOrderByDitance(!orderByDistance);
@@ -182,6 +183,10 @@ export default function CountryPage() {
                           Explore this location!
                         </Button>
                       </Link>
+                      <Card.Text>
+                        {" "}
+                        <AiFillLike /> {post.likes}
+                      </Card.Text>
                     </Card.Body>
                   </Card>
                 );
@@ -200,15 +205,19 @@ export default function CountryPage() {
                       </Card.Text>
                       <hr />
                       <Card.Img size='lg' src={post.imageUrl} alt='' />
-                      <Button
-                        varient='primary'
-                        size='lg'
-                        className='detailButton'
-                      >
-                        <Link to={`/locations/${post.id}/details`}>
+                      <Link to={`/locations/${post.id}/details`}>
+                        <Button
+                          varient='primary'
+                          size='lg'
+                          className='detailButton'
+                        >
                           Explore this location!
-                        </Link>
-                      </Button>
+                        </Button>
+                      </Link>
+                      <Card.Text>
+                        {" "}
+                        <AiFillLike /> {post.likes}
+                      </Card.Text>
                       <Card.Text>
                         The distance between you and this amazing spot is:{" "}
                         {getDistanceFromLatLonInKm(

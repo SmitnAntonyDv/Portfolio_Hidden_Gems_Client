@@ -35,7 +35,8 @@ export default function Login() {
   return (
     <Container>
       <Form as={Col} md={{ span: 6, offset: 3 }} className='mt-5'>
-        <h1 className='mt-5 mb-5'>Login</h1>
+        <h1 className='login-title'>Login</h1>
+
         <Form.Group controlId='formBasicEmail'>
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -57,14 +58,21 @@ export default function Login() {
             required
           />
         </Form.Group>
-        <Form.Group className='mt-5'>
-          <Button variant='primary' type='submit' onClick={submitForm}>
+        <Form.Group className='mt-2'>
+          <Button
+            variant='primary'
+            type='submit'
+            onClick={submitForm}
+            className='submit-button'
+          >
             Log in
           </Button>
         </Form.Group>
-        <Link to='/signup' style={{ textAlign: "center" }}>
-          Click here to sign up
-        </Link>
+        <div className='sign-up-link'>
+          <Link to='/signup' style={{ textAlign: "center" }}>
+            Join the community! Create an account
+          </Link>
+        </div>
       </Form>
     </Container>
   );

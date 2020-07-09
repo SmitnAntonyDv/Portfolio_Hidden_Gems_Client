@@ -13,9 +13,7 @@ export default function WeatherInfo(props) {
   const { main, winds, weather, sys, clouds } = weatherData;
   // K-273.15. = Celcius
   const convert = 273.15;
-  if (main) {
-    console.log("This is?!", moment.unix(1594248172)._d);
-  }
+
   function renderWeatherInfo() {
     if (main) {
       console.log(main.temp);
