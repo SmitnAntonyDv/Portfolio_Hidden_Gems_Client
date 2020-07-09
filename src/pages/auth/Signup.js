@@ -23,7 +23,6 @@ export default function Signup() {
     event.preventDefault();
 
     phoneNumber = phoneNumber ? phoneNumber : 0;
-    console.log("Y U BULLY ME", phoneNumber);
     dispatch(signUp(name, email, password, phoneNumber));
 
     setPhoneNumber("");
