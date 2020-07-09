@@ -10,6 +10,7 @@
 - [Goals](##Goals)
 - [User Stories](##User Stories)
 - [Technologies Used](##Technologies Used)
+- [APIs used](##APIs used)
 - [Server Repository](##Sever Repository)
 - [Setup](##Setup)
 
@@ -39,7 +40,38 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Technologies Used <hr>
 
+**Front End**
+
+- Node.js
+- ReactJS
+- Redux
+- Axios
+- Geocode & Reverse-Geocode : GeoLocation
+- React-Bootstrap
+- Sass
+- Bootstrap
+- React-Leaflet
+- Leaflet
+
+**Back End**
+
+- Express
+- REST API
+- Sequelize ORM
+- Postgress
+- Axios
+
+## APIs used <hr>
+
+- [OpenWeather](https://openweathermap.org/api) - Freemium Weather API
+- [Restcountries](https://restcountries.eu/) - Open Source Country API
+- [OpenCage](https://opencagedata.com/api) - Freemium Geocoding & reverse-Geocoding API
+
 ## Server Repository <hr>
+
+- The server side of this project is an Express server connected to a Sequelize database.
+- Note: you will need both to run this project!
+- [The Server and more details here.](https://github.com/SmitnAntonyDv/Portfolio-project-Hidden_Gems-BackEnd)
 
 ## Setup Client <hr>
 
