@@ -40,23 +40,11 @@ export default function Mymap(props) {
   const [updatedLongitude, setUpdatedLongitude] = useState("");
   const [lat, setLat] = useState("");
   const [lon, setLon] = useState("");
-  const tester = false;
 
-  // user coords switch block
-
-  let userLocation;
-  if (!!User.latitude && User.longitude && !!tester) {
-    userLocation = {
-      lat: Number(User.latitude),
-      lon: Number(User.longitude),
-    };
-  } else {
-    userLocation = {
-      lat: Number(updatedLatitude),
-      lon: Number(updatedLongitude),
-    };
-  }
-
+  let userLocation = {
+    lat: Number(updatedLatitude),
+    lon: Number(updatedLongitude),
+  };
   //User tracker function block
   function updateLocation(pos) {
     const coords = pos.coords;
@@ -73,7 +61,7 @@ export default function Mymap(props) {
   watchUserLocation();
   getCurrentLoc();
 
-  //toggle function
+  //toggle tracking
   function toggleUserTracking() {
     setToggleTracking(!toggleTracking);
     setTrackingBtnText(!trackingBtnText);
@@ -83,11 +71,6 @@ export default function Mymap(props) {
     trackOrNot = "Disable Tracking";
   } else {
     trackOrNot = "Enable Tracking";
-  }
-  function toggleUserCurrentLoc() {
-    setToggleCurrentLoc(!toggleCurrentLoc);
-    setTimeout(() => setToggleCurrentLoc(toggleCurrentLoc), 1500);
-    console.log(toggleCurrentLoc);
   }
 
   // current location marker
@@ -101,6 +84,13 @@ export default function Mymap(props) {
       error,
       options
     );
+  }
+
+  //toggle current marker
+  function toggleUserCurrentLoc() {
+    setToggleCurrentLoc(!toggleCurrentLoc);
+    setTimeout(() => setToggleCurrentLoc(toggleCurrentLoc), 1500);
+    console.log(toggleCurrentLoc);
   }
 
   return (
@@ -148,15 +138,6 @@ export default function Mymap(props) {
           ) : (
             <></>
           )}
-          {/* {!!User.id && !!toggleCurrentLoc ? (
-            <Marker
-              key={381987}
-              position={[userLocation.lat, userLocation.lon]}
-              icon={hifigure}
-            />
-          ) : (
-            <></>
-          )} */}
         </Map>
       ) : (
         <div>Loading map . . .</div>
