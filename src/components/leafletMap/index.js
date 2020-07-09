@@ -41,19 +41,10 @@ export default function Mymap(props) {
   const [lat, setLat] = useState("");
   const [lon, setLon] = useState("");
 
-  // user coords switch block
-  let userLocation;
-  if (!!User.latitude && User.longitude) {
-    userLocation = {
-      lat: Number(User.latitude),
-      lon: Number(User.longitude),
-    };
-  } else {
-    userLocation = {
-      lat: Number(updatedLatitude),
-      lon: Number(updatedLongitude),
-    };
-  }
+  let userLocation = {
+    lat: Number(updatedLatitude),
+    lon: Number(updatedLongitude),
+  };
   //User tracker function block
   function updateLocation(pos) {
     const coords = pos.coords;
@@ -70,7 +61,7 @@ export default function Mymap(props) {
   watchUserLocation();
   getCurrentLoc();
 
-  //toggle function
+  //toggle tracking
   function toggleUserTracking() {
     setToggleTracking(!toggleTracking);
     setTrackingBtnText(!trackingBtnText);
@@ -80,9 +71,6 @@ export default function Mymap(props) {
     trackOrNot = "Disable Tracking";
   } else {
     trackOrNot = "Enable Tracking";
-  }
-  function toggleUserCurrentLoc() {
-    setToggleCurrentLoc(!toggleCurrentLoc);
   }
 
   // current location marker
@@ -96,6 +84,13 @@ export default function Mymap(props) {
       error,
       options
     );
+  }
+
+  //toggle current marker
+  function toggleUserCurrentLoc() {
+    setToggleCurrentLoc(!toggleCurrentLoc);
+    setTimeout(() => setToggleCurrentLoc(toggleCurrentLoc), 1500);
+    console.log(toggleCurrentLoc);
   }
 
   return (

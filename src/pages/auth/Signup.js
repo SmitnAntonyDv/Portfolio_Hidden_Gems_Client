@@ -13,7 +13,7 @@ export default function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  let [phoneNumber, setPhoneNumber] = useState("");
   const [shareLocation, setShareLocation] = useState("");
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
@@ -22,7 +22,8 @@ export default function Signup() {
   function submitForm(event) {
     event.preventDefault();
 
-    dispatch(signUp(name, email, password, phoneNumber, shareLocation));
+    phoneNumber = phoneNumber ? phoneNumber : 0;
+    dispatch(signUp(name, email, password, phoneNumber));
 
     setPhoneNumber("");
     setEmail("");
@@ -74,7 +75,7 @@ export default function Signup() {
             required
           />
         </Form.Group>
-        <Form.Group controlId='formBasicEmail'>
+        <Form.Group>
           <Form.Label>Phone Number</Form.Label>
           <Form.Control
             value={phoneNumber}

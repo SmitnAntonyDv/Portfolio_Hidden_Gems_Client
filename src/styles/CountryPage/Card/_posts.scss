@@ -4,7 +4,9 @@ div.countryCard-posts.card {
 
 div.card {
   min-width: 65vh;
-
+  @media only screen and (max-width: 500px) {
+    width: 450px;
+  }
   padding: 5vh;
   border: none;
 }
