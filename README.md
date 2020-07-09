@@ -1,68 +1,59 @@
+# **Explore Hidden Gems**
+
+[See the deployed website here](www.google.com)
+
+## **Table of Content**<hr>
+
+- [Introduction](##introduction)
+- [About](##About)
+- [Demo](##Demo)
+- [Goals](##Goals)
+- [User Stories](##User Stories)
+- [Technologies Used](##Technologies Used)
+- [Server Repository](##Sever Repository)
+- [Setup](##Setup)
+
+## Introduction<hr>
+
+Hi! I am Antony, this web application is my portfolio project. This is a MVP with a few important features implemented, with More [features](https://github.com/users/SmitnAntonyDv/projects/1) to come in the future.
+
+## About<hr>
+
+Have a free day while tracking through Bali? Check posts made by other backpackers on **Explore Hidden Gems** and discover beautifull locations you could visit near you.<br>
+Planning your backpacktrip in Vietnam and need some inspiration? Check some posts to find some locations you want to visit during your trip.
+<br>
+
+**Explore Hidden Gems** is dedicated to backpackers, who want to share and explore locations off the beaten track.<br>
+
+The App's main concept is to be a platform where Users can view and/or post Must-visit locations. The app offers GPS functionality, a rating system, sorting based on distance between users and suggested location and more.
+
+The app is dynamic and designed for tablet and PC (mobile version coming soon)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Demo <hr>
 
-In the project directory, you can run:
+## User Stories <hr>
 
-### `npm start`
+## Goals <hr>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technologies Used <hr>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Server Repository <hr>
 
-### `npm test`
+## Setup Client <hr>
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Clone the app
+- Cd into the project directory where you cloned the app
+- install dependencies using `npm install`
+- start the development server using `npm run start`
+- client runs on localhost:3000 by default
+- If for whatever reason the Client does not open in your browser after starting the start command, open your browser and open `http://localhost:3000/`
 
-### `npm run build`
+## Setup Server <hr>
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Clone the [server](https://github.com/SmitnAntonyDv/Portfolio-project-Hidden_Gems-BackEnd)
+- Cd into project directory
+- install dependencies using `npm install` inside the directory
+- start the server using `npx nodemon index.js` OR `npm node index.js`
+- Server runs on port 4000 by default
