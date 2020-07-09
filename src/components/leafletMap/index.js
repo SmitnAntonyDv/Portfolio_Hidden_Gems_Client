@@ -40,10 +40,12 @@ export default function Mymap(props) {
   const [updatedLongitude, setUpdatedLongitude] = useState("");
   const [lat, setLat] = useState("");
   const [lon, setLon] = useState("");
+  const tester = false;
 
   // user coords switch block
+
   let userLocation;
-  if (!!User.latitude && User.longitude) {
+  if (!!User.latitude && User.longitude && !!tester) {
     userLocation = {
       lat: Number(User.latitude),
       lon: Number(User.longitude),
@@ -54,6 +56,7 @@ export default function Mymap(props) {
       lon: Number(updatedLongitude),
     };
   }
+
   //User tracker function block
   function updateLocation(pos) {
     const coords = pos.coords;
@@ -83,6 +86,7 @@ export default function Mymap(props) {
   }
   function toggleUserCurrentLoc() {
     setToggleCurrentLoc(!toggleCurrentLoc);
+    setTimeout(() => setToggleCurrentLoc(toggleCurrentLoc), 1500);
     console.log(toggleCurrentLoc);
   }
 
@@ -144,7 +148,7 @@ export default function Mymap(props) {
           ) : (
             <></>
           )}
-          {!!User.id && !!toggleCurrentLoc ? (
+          {/* {!!User.id && !!toggleCurrentLoc ? (
             <Marker
               key={381987}
               position={[userLocation.lat, userLocation.lon]}
@@ -152,7 +156,7 @@ export default function Mymap(props) {
             />
           ) : (
             <></>
-          )}
+          )} */}
         </Map>
       ) : (
         <div>Loading map . . .</div>
