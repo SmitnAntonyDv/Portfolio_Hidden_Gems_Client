@@ -1,10 +1,11 @@
 button.submit-button.btn.btn-primary {
   margin: 2vh;
-  padding: 2vh;
-  width: 45%;
+  padding: 1vh;
+  width: 70%;
   background: linear-gradient(to bottom, #bf7b41 5%, #cf9c77 100%);
   background-color: #cf9c77;
   box-shadow: 3px 3px 7px 0px #899599;
+  font-size: 1.3rem;
 }
 
 button.submit-button.btn.btn-primary:hover {
