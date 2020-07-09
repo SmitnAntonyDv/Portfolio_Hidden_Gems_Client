@@ -4,7 +4,7 @@
 
 ## **Table of Content**<hr>
 
-- [Introduction](##introduction)
+- [Introduction](##Introduction)
 - [About](##About)
 - [Demo](##Demo)
 - [Goals](##Goals)
@@ -28,7 +28,7 @@ Planning your backpacktrip in Vietnam and need some inspiration? Check some post
 
 The App's main concept is to be a platform where Users can view and/or post Must-visit locations. The app offers GPS functionality, a rating system, sorting based on distance between users and suggested location and more.
 
-The app is dynamic and designed for tablet and PC (mobile version coming soon)
+The app is dynamic and designed for tablet and PC (mobile version coming soon).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -36,7 +36,28 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## User Stories <hr>
 
+- As a backpacker . . . <br>I want to browse a suggestion list from other backpackers about possible MUST-visit locations in a specific backpacker-Country.
+- As a backpacker interested in a suggestion . . .<br> I want to view the details of a post to see a detailed description and the local weather conditions, so I can decide to go visit it.
+- As a backpacker interested in a suggestion . . . <br> I want to have an interactive map, so I can see how close the distance between me and the location.
+- as a logged in backpacker. . . <br> I want to share and post my own MUST-visit location, so other backpackers can find my hidden gem.
+
+### User Stories still being implemented
+
+- As a logged in backpacker . . .<br> I want to rate and comment on suggested locations to provide other users with additional information, so the post rank increases and more backpackers get to see this amazing post.
+- As a logged in backpacker . . . <br> I want to directly message the author of a post in a private message to gain more insightful information, so I can decide what to bring / not to bring with me.
+
 ## Goals <hr>
+
+The Goal of this project is to build a full-stack app and consolidating the knowledge I've learned during [this bootcamp](https://codaisseur.com/) as well as learning how to use new technologies through documentation.
+<br>
+**Summary**
+
+- Practice full-stacl development.
+- Practice learning and implementing new technology independently.
+- Practice External API.
+- Consolidate and implement knowledge learned through the bootcamp.
+- Practicing a Development approach by creating and following User Stories & Wireframes.
+- Practicing disciplined git usage with proper commits & brancing.
 
 ## Technologies Used <hr>
 
@@ -52,8 +73,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Bootstrap
 - React-Leaflet
 - Leaflet
-
-**Back End**
+  **Back End**
 
 - Express
 - REST API
@@ -63,9 +83,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## APIs used <hr>
 
-- [OpenWeather](https://openweathermap.org/api) - Freemium Weather API
-- [Restcountries](https://restcountries.eu/) - Open Source Country API
-- [OpenCage](https://opencagedata.com/api) - Freemium Geocoding & reverse-Geocoding API
+- [OpenWeather](https://openweathermap.org/api) - Freemium Weather API.
+- [Restcountries](https://restcountries.eu/) - Open Source Country API.
+- [OpenCage](https://opencagedata.com/api) - Freemium Geocoding & reverse-Geocoding API.
 
 ## Server Repository <hr>
 
@@ -75,17 +95,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Setup Client <hr>
 
-- Clone the app
-- Cd into the project directory where you cloned the app
-- install dependencies using `npm install`
-- start the development server using `npm run start`
-- client runs on localhost:3000 by default
-- If for whatever reason the Client does not open in your browser after starting the start command, open your browser and open `http://localhost:3000/`
+- Clone the app.
+- Cd into the project directory where you cloned the app.
+- install dependencies using `npm install`.
+- start the development server using `npm run start`.
+- client runs on localhost:3000 by default.
+- If for whatever reason the Client does not open in your browser after starting the start command, open your browser and open `http://localhost:3000/`.
 
 ## Setup Server <hr>
 
-- Clone the [server](https://github.com/SmitnAntonyDv/Portfolio-project-Hidden_Gems-BackEnd)
-- Cd into project directory
-- install dependencies using `npm install` inside the directory
+- Clone the [server](https://github.com/SmitnAntonyDv/Portfolio-project-Hidden_Gems-BackEnd).
+- Cd into project directory.
+- install dependencies using `npm install` inside the directory.
 - start the server using `npx nodemon index.js` OR `npm node index.js`
-- Server runs on port 4000 by default
+- Server runs on port 4000 by default.
