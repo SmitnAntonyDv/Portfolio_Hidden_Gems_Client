@@ -28,11 +28,7 @@ export default function Footer() {
         <div className='col-xs-12 col-sm-6 col-md-3'>
           <h4 className='footer-header'>Join Us</h4>
           <ul className='list-unstyled'>
-            <li>
-              <a className='fake-Link' href='#' onClick='return false;'>
-                Explore positions
-              </a>
-            </li>
+            <li className='fake-Link'>Explore positions</li>
             <li className='fake-Link'>Management</li>
             <li className='fake-Link'>Company Trip</li>
           </ul>

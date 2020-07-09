@@ -24,26 +24,24 @@ export default function Toolbar() {
   ) : (
     []
   );
+  let postPath = `/locations/${country.id}/posts`;
 
   function renderCountryButton() {
     if (history.location.pathname === `/locations/${postId}/details`) {
-      return (
-        <Link to={`/locations/${country.id}/posts`}>
-          Explore {`${country.name}`}
-        </Link>
-      );
+      return <Nav.Link href={postPath}>Explore {country.name}</Nav.Link>;
     } else {
       return <div>{null}</div>;
     }
   }
 
   return (
-    <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark' fluid>
+    <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
       <Navbar.Brand href='/'>Explore Hidden Gems</Navbar.Brand>
       <Navbar.Toggle aria-controls='responsive-navbar-nav' />
       <Navbar.Collapse id='responsive-navbar-nav'>
-        <Nav className='mr-auto'>{renderCountryButton()}</Nav>
+        <Nav className='mr-auto'>{[]}</Nav>
         <Nav>
+          {renderCountryButton()}
           {postIfLoggedIn}
           {loginControls}
         </Nav>

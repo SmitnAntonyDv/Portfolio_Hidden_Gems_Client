@@ -13,7 +13,7 @@ export default function CountryAPIcard(props) {
     dispatch(fetchCountryInfo(name));
   }, [name]);
 
-  console.log("CORRECT INFO?", info);
+  // console.log("CORRECT INFO?", info);
   return (
     <CardGroup className='APIcard'>
       <Card className='APIcountryInfo'>

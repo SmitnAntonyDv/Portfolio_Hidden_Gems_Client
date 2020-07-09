@@ -98,8 +98,6 @@ export default function Mymap(props) {
     );
   }
 
-  console.log("CURRENT LAT", lat);
-  console.log("CURRENT LON", lon);
   return (
     <div>
       <div className='mapbuttons'>
@@ -149,6 +147,7 @@ export default function Mymap(props) {
       ) : (
         <div>Loading map . . .</div>
       )}
+      <div></div>
     </div>
   );
 }

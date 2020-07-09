@@ -58,12 +58,21 @@ export default function Login() {
           />
         </Form.Group>
         <Form.Group className='mt-5'>
-          <Button variant='primary' type='submit' onClick={submitForm}>
+          <Button
+            variant='primary'
+            type='submit'
+            onClick={submitForm}
+            className='submit-button'
+          >
             Log in
           </Button>
         </Form.Group>
-        <Link to='/signup' style={{ textAlign: "center" }}>
-          Click here to sign up
+        <Link
+          to='/signup'
+          style={{ textAlign: "center" }}
+          className='sign-up-link'
+        >
+          Create an account
         </Link>
       </Form>
     </Container>
