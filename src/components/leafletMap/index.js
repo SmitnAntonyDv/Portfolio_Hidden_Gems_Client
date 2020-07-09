@@ -83,6 +83,7 @@ export default function Mymap(props) {
   }
   function toggleUserCurrentLoc() {
     setToggleCurrentLoc(!toggleCurrentLoc);
+    console.log(toggleCurrentLoc);
   }
 
   // current location marker
@@ -140,6 +141,15 @@ export default function Mymap(props) {
           )}
           {!!lat && !!lon && !!toggleCurrentLoc ? (
             <Marker key={95103} position={[lat, lon]} icon={hifigure} />
+          ) : (
+            <></>
+          )}
+          {!!User.id && !!toggleCurrentLoc ? (
+            <Marker
+              key={381987}
+              position={[userLocation.lat, userLocation.lon]}
+              icon={hifigure}
+            />
           ) : (
             <></>
           )}
