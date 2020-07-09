@@ -38,7 +38,8 @@ export default function Signup() {
   return (
     <Container>
       <Form as={Col} md={{ span: 6, offset: 3 }} className='mt-5'>
-        <h1 className='mt-5 mb-5'>Signup</h1>
+        <h1 className='signup-title'>Signup</h1>
+        <hr />
         <Form.Group controlId='formBasicName'>
           <Form.Label>Name</Form.Label>
           <Form.Control
@@ -81,9 +82,6 @@ export default function Signup() {
             type='number'
             placeholder='Enter phone number'
           />
-          <Form.Text className='text-muted'>
-            We'll never share your email with anyone else.
-          </Form.Text>
         </Form.Group>
         <Form.Check
           type='switch'
@@ -91,8 +89,17 @@ export default function Signup() {
           id='custom-switch'
           label='Share Location when logged in'
         />
-        <Form.Group className='mt-5'>
-          <Button variant='primary' type='submit' onClick={submitForm}>
+        <Form.Text className='text-muted'>
+          Your location will ONLY be used for app functionality and NEVER shared
+          with third-parties
+        </Form.Text>
+        <Form.Group className='submit-group'>
+          <Button
+            variant='primary'
+            type='submit'
+            onClick={submitForm}
+            className='signup-submit-button'
+          >
             Sign up
           </Button>
         </Form.Group>
