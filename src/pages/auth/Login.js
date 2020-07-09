@@ -57,7 +57,7 @@ export default function Login() {
             required
           />
         </Form.Group>
-        <Form.Group className='mt-5'>
+        <Form.Group className='mt-2'>
           <Button
             variant='primary'
             type='submit'
@@ -67,13 +67,11 @@ export default function Login() {
             Log in
           </Button>
         </Form.Group>
-        <Link
-          to='/signup'
-          style={{ textAlign: "center" }}
-          className='sign-up-link'
-        >
-          Create an account
-        </Link>
+        <div className='sign-up-link'>
+          <Link to='/signup' style={{ textAlign: "center" }}>
+            Join the community! Create an account
+          </Link>
+        </div>
       </Form>
     </Container>
   );
