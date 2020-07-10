@@ -1,6 +1,6 @@
 # **Explore Hidden Gems**
 
-[See the deployed website here](www.google.com)
+:point_right: [See the deployed website here](www.google.com)
 
 ## **Table of Content**<hr>
 
@@ -33,6 +33,13 @@ The app is dynamic and designed for tablet and PC (mobile version coming soon).
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Demo <hr>
+![](./src/gifs/countryPage.gif)
+<br>
+![](./src/gifs/detialPage.gif)
+<br>
+![](./src/gifs/landingPage.gif)
+<br>
+![](./src/gifs/leafletMap.gif)
 
 ## User Stories <hr>
 
