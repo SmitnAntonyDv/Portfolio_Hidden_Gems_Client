@@ -31,7 +31,7 @@ export default function CountryPage() {
   const [orderByDistance, setOrderByDitance] = useState(true);
   const [UPDlatitude, setLatitude] = useState("");
   const [UPDlongitude, setLongitutde] = useState("");
-  // console.log();
+
 
   // haversine formula function
   function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
@@ -42,9 +42,9 @@ export default function CountryPage() {
     const a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       Math.cos(deg2rad(lat1)) *
-        Math.cos(deg2rad(lat2)) *
-        Math.sin(dLon / 2) *
-        Math.sin(dLon / 2);
+      Math.cos(deg2rad(lat2)) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     const d = R * c; // Distance in km
     return d;
@@ -66,8 +66,7 @@ export default function CountryPage() {
       lon: Number(UPDlongitude),
     };
   }
-  // console.log("STILL WORKS?", userLocation);
-  // console.log("LATITUDE", latitude, "| LONGITUDE", longitude);
+
 
   function ButtonToggleSortDistance() {
     setOrderByDitance(!orderByDistance);
@@ -124,24 +123,24 @@ export default function CountryPage() {
                 Update my location
               </Button>
             ) : (
-              <>
-                {["top"].map((placement) => (
-                  <OverlayTrigger
-                    key={placement}
-                    placement={placement}
-                    overlay={
-                      <Tooltip id={`tooltip-${placement}`}>
-                        increase accuracy
+                <>
+                  {["top"].map((placement) => (
+                    <OverlayTrigger
+                      key={placement}
+                      placement={placement}
+                      overlay={
+                        <Tooltip id={`tooltip-${placement}`}>
+                          increase accuracy
                       </Tooltip>
-                    }
-                  >
-                    <Button className='sortButton' onClick={updateLocation}>
-                      Update my location
+                      }
+                    >
+                      <Button className='sortButton' onClick={updateLocation}>
+                        Update my location
                     </Button>
-                  </OverlayTrigger>
-                ))}
-              </>
-            )}
+                    </OverlayTrigger>
+                  ))}
+                </>
+              )}
           </div>
           <div>
             <h3>
@@ -158,80 +157,80 @@ export default function CountryPage() {
       return <h2>Loading posts chief! . . . </h2>;
     } else {
       return (
-        <CardGroup>
+        <CardGroup className='country-card-wrapper'>
           {orderByDistance
             ? postDistanceArray.map((post) => {
-                return (
-                  <Card key={post.id} className='countryCard-posts'>
-                    <Card.Body>
-                      <Card.Title className='card-Title'>
-                        {post.title}
-                      </Card.Title>
-                      <hr />
-                      <Card.Text>{post.description}</Card.Text>
-                      <Card.Text>
-                        <FaMapMarkerAlt /> {post.adress}
-                      </Card.Text>
-                      <hr />
-                      <Card.Img size='lg' src={post.imageUrl} alt='' />
-                      <Link to={`/locations/${post.id}/details`}>
-                        <Button
-                          varient='primary'
-                          size='lg'
-                          className='detailButton'
-                        >
-                          Explore this location!
+              return (
+                <Card key={post.id} className='countryCard-posts'>
+                  <Card.Body>
+                    <Card.Title className='card-Title'>
+                      {post.title}
+                    </Card.Title>
+                    <hr />
+                    <Card.Text>{post.description}</Card.Text>
+                    <Card.Text>
+                      <FaMapMarkerAlt /> {post.adress}
+                    </Card.Text>
+                    <hr />
+                    <Card.Img size='lg' src={post.imageUrl} alt='' />
+                    <Link to={`/locations/${post.id}/details`}>
+                      <Button
+                        varient='primary'
+                        size='lg'
+                        className='detailButton'
+                      >
+                        Explore this location!
                         </Button>
-                      </Link>
-                      <Card.Text>
-                        {" "}
-                        <AiFillLike /> {post.likes}
-                      </Card.Text>
-                    </Card.Body>
-                  </Card>
-                );
-              })
+                    </Link>
+                    <Card.Text>
+                      {" "}
+                      <AiFillLike /> {post.likes}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              );
+            })
             : sortedByDistance.map((post) => {
-                return (
-                  <Card key={post.id} className='countryCard-posts'>
-                    <Card.Body>
-                      <Card.Title className='card-Title'>
-                        {post.title}
-                      </Card.Title>
-                      <hr />
-                      <Card.Text>{post.description}</Card.Text>
-                      <Card.Text>
-                        <FaMapMarkerAlt /> {post.adress}
-                      </Card.Text>
-                      <hr />
-                      <Card.Img size='lg' src={post.imageUrl} alt='' />
-                      <Link to={`/locations/${post.id}/details`}>
-                        <Button
-                          varient='primary'
-                          size='lg'
-                          className='detailButton'
-                        >
-                          Explore this location!
+              return (
+                <Card key={post.id} className='countryCard-posts'>
+                  <Card.Body>
+                    <Card.Title className='card-Title'>
+                      {post.title}
+                    </Card.Title>
+                    <hr />
+                    <Card.Text>{post.description}</Card.Text>
+                    <Card.Text>
+                      <FaMapMarkerAlt /> {post.adress}
+                    </Card.Text>
+                    <hr />
+                    <Card.Img size='lg' src={post.imageUrl} alt='' />
+                    <Link to={`/locations/${post.id}/details`}>
+                      <Button
+                        varient='primary'
+                        size='lg'
+                        className='detailButton'
+                      >
+                        Explore this location!
                         </Button>
-                      </Link>
-                      <Card.Text>
-                        {" "}
-                        <AiFillLike /> {post.likes}
-                      </Card.Text>
-                      <Card.Text>
-                        The distance between you and this amazing spot is:{" "}
-                        {getDistanceFromLatLonInKm(
-                          userLocation.lat,
-                          userLocation.lon,
-                          post.latitude,
-                          post.longitude
-                        ).toFixed(2)}{" "}
+                    </Link>
+                    <Card.Text>
+                      {" "}
+                      <AiFillLike /> {post.likes}
+                    </Card.Text>
+                    <Card.Text>
+                      The distance between you and this amazing spot is:{" "}
+                      {getDistanceFromLatLonInKm(
+                        userLocation.lat,
+                        userLocation.lon,
+                        post.latitude,
+                        post.longitude
+                      ).toFixed(2)}{" "}
                         km
                       </Card.Text>
-                    </Card.Body>
-                  </Card>
-                );
-              })}
+                  </Card.Body>
+                </Card>
+              );
+            })}
         </CardGroup>
       );
     }

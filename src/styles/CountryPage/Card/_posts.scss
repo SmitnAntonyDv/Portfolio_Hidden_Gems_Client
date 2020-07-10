@@ -3,10 +3,7 @@ div.countryCard-posts.card {
 }
 
 div.card {
-  min-width: 70vh;
-  @media only screen and (max-width: 500px) {
-    width: 450px;
-  }
+  min-width: 67vh;
   padding: 5vh;
   border: none;
 }
