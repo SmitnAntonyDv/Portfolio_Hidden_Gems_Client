@@ -55,7 +55,7 @@ export function logingIn(email, password) {
     }
   };
 }
-
+console.log(`${url}/signup`)
 export function signUp(name, email, password, phoneNumber) {
   return async (dispatch, getState) => {
     try {
