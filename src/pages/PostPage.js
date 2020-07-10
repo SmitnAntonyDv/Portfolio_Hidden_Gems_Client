@@ -74,7 +74,7 @@ export default function PostPage() {
   return (
     <div>
       <Container fluid>
-        <h2>Please fill in all fields to share your post</h2>
+        <h1 className="postpage-header">Please fill in all fields to share your post</h1>
         <Form as={Col} md={{ span: 6, offset: 3 }} className='mt-5'>
           <Form.Group>
             <Form.Label>Title</Form.Label>
@@ -143,11 +143,8 @@ export default function PostPage() {
               required
             />
           </Form.Group>
-
-          {/* <button onClick={getLocation}>TESTING LOCATION GET</button> */}
-
-          <Form.Group className='mt-5'>
-            <Button variant='primary' type='submit' onClick={submitForm}>
+          <Form.Group className='submit-div'>
+            <Button variant='primary' type='submit' onClick={submitForm} className='submit-button'>
               Share your beautifull location with the world!
             </Button>
           </Form.Group>
