@@ -1,6 +1,6 @@
 # **Explore Hidden Gems**
 
-[See the deployed website here](www.google.com)
+:point_right: <br>[See the deployed website here](www.google.com)
 
 ## **Table of Content**<hr>
 
@@ -33,6 +33,13 @@ The app is dynamic and designed for tablet and PC (mobile version coming soon).
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Demo <hr>
+![](./src/gifs/recording(4).gf)
+<br>
+![](./src/gifs/recording(1).gf)
+<br>
+![](./src/gifs/recording(2).gf)
+<br>
+![](./src/gifs/recording(3).gf)
 
 ## User Stories <hr>
 
