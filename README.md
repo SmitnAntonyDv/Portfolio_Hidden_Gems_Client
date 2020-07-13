@@ -1,6 +1,6 @@
 # **Explore Hidden Gems**
 
-:point_right: [See the deployed website here](www.google.com)
+:point_right: [See the deployed website here](https://hidden-gems.netlify.app/)
 
 :point_right: [kanban task board](https://github.com/users/SmitnAntonyDv/projects/1)
 
