@@ -2,6 +2,8 @@
 
 :point_right: [See the deployed website here](www.google.com)
 
+:point_right: [kanban task board](https://github.com/users/SmitnAntonyDv/projects/1)
+
 ## **Table of Content**
 
 - [Introduction](#introduction)
