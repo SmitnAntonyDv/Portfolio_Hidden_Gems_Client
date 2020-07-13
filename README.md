@@ -38,11 +38,12 @@ All constructive feedback is welcome! you can contact me [here](www.linkedin.com
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Demo
+
+![](./src/gifs/landingPage.gif)
+<br>
 ![](./src/gifs/countryPage.gif)
 <br>
 ![](./src/gifs/detialPage.gif)
-<br>
-![](./src/gifs/landingPage.gif)
 <br>
 ![](./src/gifs/leafletMap.gif)
 
