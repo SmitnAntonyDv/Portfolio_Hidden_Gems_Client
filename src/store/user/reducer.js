@@ -13,7 +13,6 @@ export default (state = initialState, { type, payload }) => {
   switch (type) {
     case LOGIN_SUCCESS:
       localStorage.setItem("token", payload.token);
-      console.log("WHATS PAYLOAD", payload);
       return { ...state, ...payload };
 
     case LOG_OUT:
