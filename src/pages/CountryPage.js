@@ -33,8 +33,7 @@ export default function CountryPage() {
 
   const [UPDlatitude, setLatitude] = useState("");
   const [UPDlongitude, setLongitutde] = useState("");
-  const [orderByDistance, setOrderByDitance] = useState(true);
-
+  // const [orderByDistance, setOrderByDitance] = useState(true);
   const [sortCards, setSortCards] = useState(true);
 
   // haversine formula function
@@ -73,7 +72,6 @@ export default function CountryPage() {
     setSortCards("Likes");
   }
   function ButtonToggleSortDistance() {
-    setOrderByDitance(!orderByDistance);
     setSortCards("Distance");
   }
 
@@ -112,19 +110,16 @@ export default function CountryPage() {
     );
   }
 
-  //Most Liked sorted_array
-  const sortByLikes = locationpost.sort(
-    (b, a) => Number(a.likes) - Number(b.likes)
-  );
-  const sortById = locationpost.sort((a, b) => Number(a.id) - Number(b.id));
-
+  //Card Sorting
   let sortingMethod = [];
   if (sortCards === "Likes") {
-    sortingMethod = sortByLikes;
+    sortingMethod = locationpost.sort(
+      (b, a) => Number(a.likes) - Number(b.likes)
+    );
   } else if (sortCards === "Distance") {
     sortingMethod = sortedByDistance;
   } else {
-    sortingMethod = sortById;
+    sortingMethod = locationpost.sort((a, b) => Number(a.id) - Number(b.id));
   }
 
   function renderSortingButtons() {
@@ -180,79 +175,35 @@ export default function CountryPage() {
     } else {
       return (
         <CardGroup className='country-card-wrapper'>
-          {orderByDistance
-            ? locationpost.map((post) => {
-                return (
-                  <Card key={post.id} className='countryCard-posts'>
-                    <Card.Body>
-                      <Card.Title className='card-Title'>
-                        {post.title}
-                      </Card.Title>
-                      <hr />
-                      <Card.Text>{post.description}</Card.Text>
-                      <Card.Text>
-                        <FaMapMarkerAlt /> {post.adress}
-                      </Card.Text>
-                      <hr />
-                      <Card.Img size='lg' src={post.imageUrl} alt='' />
-                      <Link to={`/locations/${post.id}/details`}>
-                        <Button
-                          varient='primary'
-                          size='lg'
-                          className='detailButton'
-                        >
-                          Explore this location!
-                        </Button>
-                      </Link>
-                      <Card.Text>
-                        {" "}
-                        <AiFillLike /> {post.likes}
-                      </Card.Text>
-                    </Card.Body>
-                  </Card>
-                );
-              })
-            : sortedByDistance.map((post) => {
-                return (
-                  <Card key={post.id} className='countryCard-posts'>
-                    <Card.Body>
-                      <Card.Title className='card-Title'>
-                        {post.title}
-                      </Card.Title>
-                      <hr />
-                      <Card.Text>{post.description}</Card.Text>
-                      <Card.Text>
-                        <FaMapMarkerAlt /> {post.adress}
-                      </Card.Text>
-                      <hr />
-                      <Card.Img size='lg' src={post.imageUrl} alt='' />
-                      <Link to={`/locations/${post.id}/details`}>
-                        <Button
-                          varient='primary'
-                          size='lg'
-                          className='detailButton'
-                        >
-                          Explore this location!
-                        </Button>
-                      </Link>
-                      <Card.Text>
-                        {" "}
-                        <AiFillLike /> {post.likes}
-                      </Card.Text>
-                      <Card.Text>
-                        The distance between you and this amazing spot is:{" "}
-                        {getDistanceFromLatLonInKm(
-                          userLocation.lat,
-                          userLocation.lon,
-                          post.latitude,
-                          post.longitude
-                        ).toFixed(2)}{" "}
-                        km
-                      </Card.Text>
-                    </Card.Body>
-                  </Card>
-                );
-              })}
+          {sortingMethod.map((post) => {
+            return (
+              <Card key={post.id} className='countryCard-posts'>
+                <Card.Body>
+                  <Card.Title className='card-Title'>{post.title}</Card.Title>
+                  <hr />
+                  <Card.Text>{post.description}</Card.Text>
+                  <Card.Text>
+                    <FaMapMarkerAlt /> {post.adress}
+                  </Card.Text>
+                  <hr />
+                  <Card.Img size='lg' src={post.imageUrl} alt='' />
+                  <Link to={`/locations/${post.id}/details`}>
+                    <Button
+                      varient='primary'
+                      size='lg'
+                      className='detailButton'
+                    >
+                      Explore this location!
+                    </Button>
+                  </Link>
+                  <Card.Text>
+                    {" "}
+                    <AiFillLike /> {post.likes}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            );
+          })}
         </CardGroup>
       );
     }
