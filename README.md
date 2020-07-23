@@ -1,68 +1,127 @@
+# **Explore Hidden Gems**
+
+:point_right: [See the deployed website here](https://hidden-gems.netlify.app/)
+
+:point_right: [kanban task board](https://github.com/users/SmitnAntonyDv/projects/1)
+
+## **Table of Content**
+
+- [Introduction](#introduction)
+- [About](#about)
+- [Demo](#demo)
+- [Goals](#goals)
+- [User-Stories](#user-stories)
+- [Technologies-Used](#technologies-used)
+- [APIs-used](#apis-used)
+- [Server-Repository](#server-repository)
+- [Setup](#setup)
+  * [Setup-Client](#setup-client)
+  * [Setup-Server](setup-server)
+
+## Introduction
+
+Hi! :wave: I am Antony, this web application is my portfolio project. This is a MVP with a few important features implemented, with More [features](https://github.com/users/SmitnAntonyDv/projects/1) to come in the future.
+
+## About
+
+Have a free day while tracking through Bali? Check posts made by other backpackers on **Explore Hidden Gems** and discover beautifull locations you could visit near you.<br>
+Planning your backpacktrip in Vietnam and need some inspiration? Check some posts to find some locations you want to visit during your trip.
+<br>
+
+**Explore Hidden Gems** is dedicated to backpackers, who want to share and explore locations off the beaten track.<br>
+
+The App's main concept is to be a platform where Users can view and/or post Must-visit locations. The app offers GPS functionality, a rating system, sorting based on distance between users and suggested location and more.
+
+The app is dynamic and designed for tablet and PC (mobile version coming soon).
+All constructive feedback is welcome! you can contact me [here](www.linkedin.com/in/antony-smit) :point_left:
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Demo
 
-In the project directory, you can run:
+![](./src/gifs/landingPage.gif)
+<br>
+![](./src/gifs/countryPage.gif)
+<br>
+![](./src/gifs/detialPage.gif)
+<br>
+![](./src/gifs/leafletMap.gif)
 
-### `npm start`
+## User-Stories 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- As a backpacker . . . <br>I want to browse a suggestion list from other backpackers about possible MUST-visit locations in a specific backpacker-Country.
+- As a backpacker interested in a suggestion . . .<br> I want to view the details of a post to see a detailed description and the local weather conditions, so I can decide to go visit it.
+- As a backpacker interested in a suggestion . . . <br> I want to have an interactive map, so I can see how close the distance between me and the location.
+- as a logged in backpacker. . . <br> I want to share and post my own MUST-visit location, so other backpackers can find my hidden gem.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### User Stories still being implemented
 
-### `npm test`
+- As a logged in backpacker . . .<br> I want to rate and comment on suggested locations to provide other users with additional information, so the post rank increases and more backpackers get to see this amazing post.
+- As a logged in backpacker . . . <br> I want to directly message the author of a post in a private message to gain more insightful information, so I can decide what to bring / not to bring with me.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Goals
 
-### `npm run build`
+The Goal of this project is to build a full-stack app and consolidating the knowledge I've learned during [this bootcamp](https://codaisseur.com/) as well as learning how to use new technologies through documentation.
+<br>
+**Summary**
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Practice full-stacl development.
+- Practice learning and implementing new technology independently.
+- Practice External API.
+- Consolidate and implement knowledge learned through the bootcamp.
+- Practicing a Development approach by creating and following User Stories & Wireframes.
+- Practicing disciplined git usage with proper commits & brancing.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Technologies-Used
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Front-End**
 
-### `npm run eject`
+- Node.js
+- ReactJS
+- Redux
+- Axios
+- Geocode & Reverse-Geocode : GeoLocation
+- React-Bootstrap
+- Sass
+- Bootstrap
+- React-Leaflet
+- Leaflet
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  **Back-End**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Express
+- REST API
+- Sequelize ORM
+- Postgress
+- Axios
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## APIs-used
 
-## Learn More
+- [OpenWeather](https://openweathermap.org/api) - Freemium Weather API.
+- [Restcountries](https://restcountries.eu/) - Open Source Country API.
+- [OpenCage](https://opencagedata.com/api) - Freemium Geocoding & reverse-Geocoding API.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Server-Repository
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- The server side of this project is an Express server connected to a Sequelize database.
+- Note: you will need both to run this project!
+- :point_right: [The Server and more details here.](https://github.com/SmitnAntonyDv/Portfolio-project-Hidden_Gems-BackEnd)
 
-### Code Splitting
+## Setup
+### Setup-Client
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- Clone the app.
+- Cd into the project directory where you cloned the app.
+- install dependencies using `npm install`.
+- start the development server using `npm run start`.
+- client runs on localhost:3000 by default.
+- If for whatever reason the Client does not open in your browser after starting the start command, open your browser and open `http://localhost:3000/`.
 
-### Analyzing the Bundle Size
+### Setup-Server
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Clone the [server](https://github.com/SmitnAntonyDv/Portfolio-project-Hidden_Gems-BackEnd).
+- Cd into project directory.
+- install dependencies using `npm install` inside the directory.
+- start the server using `npx nodemon index.js` OR `npm node index.js`
+- Server runs on port 4000 by default.

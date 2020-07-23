@@ -1,38 +1,49 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  min-height: 100vh;
+  text-align: center;
+  background-color: rgb(245, 242, 216);
 }
 
-.App-link {
-  color: #61dafb;
+/* hiding LI bullets */
+li {
+  list-style: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* styling the boostrap navbar */
+.navbar-dark .navbar-nav .nav-link {
+  color: white !important;
+}
+.navbar-dark .navbar-toggler-icon {
+  color: white !important;
+}
+.navbar-dark .navbar-toggler {
+  color: white !important;
+  border-color: white !important;
+}
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark {
+  background-color: #7e783a !important;
+}
+button.btn.btn-primary {
+  background-color: #7e783a;
+  border-color: #7e783a;
+}
+a {
+  color: white !important
+  ;
+}
+div#responsive-navbar-nav.navbar-collapse.collapse {
+  float: left !important;
+}
+
+/* leaflet map styling */
+.leaflet-container {
+  width: 100%;
+  height: 50vh;
+}
+
+/* hidding tooltip style*/
+.tooltipHidden {
+  display: none !important;
 }

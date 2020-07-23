@@ -1,0 +1,49 @@
+.main-footer {
+  color: black;
+  background-color: #e9e6e6ec;
+  padding-top: 1em;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  flex-flow: row nowrap;
+  line-height: 1.2;
+}
+.footer-header {
+  border-bottom: 0.06em solid #c7c7c7;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.footer-social {
+  display: table;
+}
+.Icons-horizontal-list-unstyled li {
+  display: inline;
+  margin-left: 2vh;
+  font-size: 3vh;
+}
+.Icons-horizontal-list-unstyled li svg {
+  margin-left: 1em;
+  cursor: pointer;
+}
+.Icons-horizontal-list-unstyled li :hover {
+  color: blue;
+}
+
+.fake-Link {
+  color: rgb(54, 104, 160) !important;
+  font-size: 2.2vh;
+  margin: 1vh;
+
+  cursor: pointer;
+}
+.fake-Link:hover {
+  text-decoration: underline;
+}
+
+.list-unstyled-About-Us li {
+  margin: 1vh;
+}
+.negative-footer {
+  flex-shrink: 0;
+}
