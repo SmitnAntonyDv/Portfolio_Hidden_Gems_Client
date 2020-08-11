@@ -25,7 +25,7 @@ Hi! :wave: I am Antony, this web application is my portfolio project. This is a 
 ## About
 
 Have a free day while tracking through Bali? Check posts made by other backpackers on **Explore Hidden Gems** and discover beautifull locations you could visit near you.<br>
-Planning your backpacktrip in Vietnam and need some inspiration? Check some posts to find some locations you want to visit during your trip.
+Planning your backpacktrip in Vietnam and need some inspiration? Check some posts to find breathtaking locations varified by fellow backpackers - you want to visit during your trip.
 <br>
 
 **Explore Hidden Gems** is dedicated to backpackers, who want to share and explore locations off the beaten track.<br>
@@ -73,6 +73,11 @@ The Goal of this project is to build a full-stack app and consolidating the know
 - Practicing disciplined git usage with proper commits & brancing.
 
 ## Technologies-Used
+
+
+**Haversine Formula**
+- To calculate distance between a location and user, I delved into mathematics and ended up using the [haversine formula](https://www.geeksforgeeks.org/haversine-formula-to-find-distance-between-two-points-on-a-sphere/). This formula calculates the shortest distance between two locations on a sphere using the latitude and longitude values together with the Earth's radius. This calculation is then transformed into Javascript code which calculates the distance between locations and the user.
+
 
 **Front-End**
 
