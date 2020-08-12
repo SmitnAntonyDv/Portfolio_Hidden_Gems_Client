@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Form from "react-bootstrap/Form";
-import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
-import { Col } from "react-bootstrap";
-import { newPost, getAdress } from "../store/newpost/actions";
-import { selectUser } from "../store/user/selector";
-import { selectNewPost } from "../store/newpost/selector";
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import { Col } from 'react-bootstrap';
+import { newPost, getAdress } from '../store/newpost/actions';
+import { selectUser } from '../store/user/selector';
+import { selectNewPost } from '../store/newpost/selector';
 
 export default function PostPage() {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [adress, setAdress] = useState("");
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
+  const [adress, setAdress] = useState('');
   const [countryId, setCountryId] = useState(1);
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitutde] = useState("");
+  const [latitude, setLatitude] = useState('');
+  const [longitude, setLongitutde] = useState('');
   const [fetchUserAdress, setFetchUserAdress] = useState(false);
 
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  const { token, id } = user;
+  const { token, id, name, email } = user;
   const userAdress = useSelector(selectNewPost);
 
-  // setAdress(`${country}, ${city}`);
-
+  console.log('what is', name);
+  console.log('what is', email);
   function submitForm(e) {
     e.preventDefault();
 
@@ -38,13 +38,15 @@ export default function PostPage() {
         id,
         countryId,
         latitude,
-        longitude
+        longitude,
+        name,
+        email
       )
     );
 
-    setTitle("");
-    setDescription("");
-    setImageUrl("");
+    setTitle('');
+    setDescription('');
+    setImageUrl('');
   }
   //get user lat&lon and convert to adress
   function getUserLocationSuccess(pos) {
@@ -59,7 +61,7 @@ export default function PostPage() {
 
   //buttonhandler
   function getLocation() {
-    console.log("CLICKED!");
+    console.log('CLICKED!');
     return navigator.geolocation.getCurrentPosition(
       getUserLocationSuccess,
       error,
@@ -74,7 +76,9 @@ export default function PostPage() {
   return (
     <div>
       <Container fluid>
-        <h1 className="postpage-header">Please fill in all fields to share your post</h1>
+        <h1 className='postpage-header'>
+          Please fill in all fields to share your post
+        </h1>
         <Form as={Col} md={{ span: 6, offset: 3 }} className='mt-5'>
           <Form.Group>
             <Form.Label>Title</Form.Label>
@@ -144,7 +148,12 @@ export default function PostPage() {
             />
           </Form.Group>
           <Form.Group className='submit-div'>
-            <Button variant='primary' type='submit' onClick={submitForm} className='submit-button'>
+            <Button
+              variant='primary'
+              type='submit'
+              onClick={submitForm}
+              className='submit-button'
+            >
               Share your beautifull location with the world!
             </Button>
           </Form.Group>
