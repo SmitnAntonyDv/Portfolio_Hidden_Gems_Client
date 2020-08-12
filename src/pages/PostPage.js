@@ -23,8 +23,6 @@ export default function PostPage() {
   const { token, id, name, email } = user;
   const userAdress = useSelector(selectNewPost);
 
-  console.log('what is', name);
-  console.log('what is', email);
   function submitForm(e) {
     e.preventDefault();
 
@@ -61,7 +59,6 @@ export default function PostPage() {
 
   //buttonhandler
   function getLocation() {
-    console.log('CLICKED!');
     return navigator.geolocation.getCurrentPosition(
       getUserLocationSuccess,
       error,
