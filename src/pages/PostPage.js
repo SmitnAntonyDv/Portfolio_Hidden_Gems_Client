@@ -71,91 +71,89 @@ export default function PostPage() {
   }, [fetchUserAdress]);
 
   return (
-    <div>
-      <Container fluid>
-        <h1 className='postpage-header'>
-          Please fill in all fields to share your post
-        </h1>
-        <Form as={Col} md={{ span: 6, offset: 3 }} className='mt-5'>
-          <Form.Group>
-            <Form.Label>Title</Form.Label>
-            <Form.Control
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              type='text'
-              placeholder='post title'
-              required
-            />
-          </Form.Group>
+    <Container className='general-wrapper' fluid>
+      <h1 className='postpage-header'>
+        Please fill in all fields to share your post
+      </h1>
+      <Form as={Col} md={{ span: 6, offset: 3 }} className='mt-5'>
+        <Form.Group>
+          <Form.Label>Title</Form.Label>
+          <Form.Control
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            type='text'
+            placeholder='post title'
+            required
+          />
+        </Form.Group>
 
-          <Form.Group>
-            <Form.Label>Description</Form.Label>
-            <Form.Control
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              type='text'
-              placeholder='describe your beautifull locations to other users'
-              required
-            />
-          </Form.Group>
+        <Form.Group>
+          <Form.Label>Description</Form.Label>
+          <Form.Control
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            type='text'
+            placeholder='describe your beautifull locations to other users'
+            required
+          />
+        </Form.Group>
 
-          {/* NEEDS TO BE REFACTURED -> adress taken from API call  */}
-          <Form.Group>
-            <Form.Label>Adress</Form.Label>
-            <Form.Control
-              value={adress}
-              onChange={(e) => setAdress(e.target.value)}
-              type='text'
-              placeholder='fill in the adress here'
-              required
-            />
-          </Form.Group>
+        {/* NEEDS TO BE REFACTURED -> adress taken from API call  */}
+        <Form.Group>
+          <Form.Label>Adress</Form.Label>
+          <Form.Control
+            value={adress}
+            onChange={(e) => setAdress(e.target.value)}
+            type='text'
+            placeholder='fill in the adress here'
+            required
+          />
+        </Form.Group>
 
-          <Form.Group>
-            <Form.Label>Country</Form.Label>
-            <Form.Control
-              as='select'
-              onChange={(e) => setCountryId(e.target.value)}
-              custom
-            >
-              <option value='1'>Indonesia</option>
-              <option value='2'>Malaysia</option>
-              <option value='3'>Thailand</option>
-              <option value='4'>Singapore</option>
-              <option value='5'>Vietnam</option>
-            </Form.Control>
-          </Form.Group>
+        <Form.Group>
+          <Form.Label>Country</Form.Label>
+          <Form.Control
+            as='select'
+            onChange={(e) => setCountryId(e.target.value)}
+            custom
+          >
+            <option value='1'>Indonesia</option>
+            <option value='2'>Malaysia</option>
+            <option value='3'>Thailand</option>
+            <option value='4'>Singapore</option>
+            <option value='5'>Vietnam</option>
+          </Form.Control>
+        </Form.Group>
 
-          <Form.Group>
-            <Form.Label> Image </Form.Label>
-            <Form.Control
-              value={imageUrl}
-              onChange={(e) => setImageUrl(e.target.value)}
-              type='text'
-              required
-            />
-          </Form.Group>
+        <Form.Group>
+          <Form.Label> Image </Form.Label>
+          <Form.Control
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+            type='text'
+            required
+          />
+        </Form.Group>
 
-          <Form.Group controlId='formBasicCehckBox'>
-            <Form.Check
-              type='checkbox'
-              label='Share location'
-              onChange={getLocation}
-              required
-            />
-          </Form.Group>
-          <Form.Group className='submit-div'>
-            <Button
-              variant='primary'
-              type='submit'
-              onClick={submitForm}
-              className='submit-button'
-            >
-              Share your beautifull location with the world!
-            </Button>
-          </Form.Group>
-        </Form>
-      </Container>
-    </div>
+        <Form.Group controlId='formBasicCehckBox'>
+          <Form.Check
+            type='checkbox'
+            label='Share location'
+            onChange={getLocation}
+            required
+          />
+        </Form.Group>
+        <Form.Group className='submit-div'>
+          <Button
+            variant='primary'
+            type='submit'
+            onClick={submitForm}
+            className='submit-button'
+          >
+            Share your beautifull location with the world!
+          </Button>
+        </Form.Group>
+      </Form>
+    </Container>
   );
 }

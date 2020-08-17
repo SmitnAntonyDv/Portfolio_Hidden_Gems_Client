@@ -1,27 +1,28 @@
-@import "styles/Content/content-wrapper";
+@import 'styles/Content/content-wrapper';
 
-@import "styles/Footer/footer.scss";
+@import 'styles/Footer/footer.scss';
 
-@import "styles/homepage/banner";
-@import "styles/homepage/buttons";
+@import 'styles/homepage/banner';
+@import 'styles/homepage/buttons';
 
-@import "styles/CountryPage/sortbuttons";
-@import "styles/CountryPage/Card/posts";
-@import "styles/CountryPage/CountryInfo";
+@import 'styles/CountryPage/sortbuttons';
+@import 'styles/CountryPage/Card/posts';
+@import 'styles/CountryPage//Card//generalLayout';
+@import 'styles/CountryPage/CountryInfo';
 
-@import "styles/detailPage/general-wrapper";
-@import "styles/detailPage/Row-img_desc";
-@import "styles/detailPage/detailpost-title";
-@import "styles/detailPage/weathercomponent/weatherinfo";
-@import "styles/detailPage/leafletmap/container.scss";
-@import "styles/detailPage/leafletmap/trackbutton.scss";
+@import 'styles/detailPage/general-wrapper';
+@import 'styles/detailPage/Row-img_desc';
+@import 'styles/detailPage/detailpost-title';
+@import 'styles/detailPage/weathercomponent/weatherinfo';
+@import 'styles/detailPage/leafletmap/container.scss';
+@import 'styles/detailPage/leafletmap/trackbutton.scss';
 
-@import "styles/login/logintitle.scss";
-@import "styles/login/signUp.scss";
-@import "styles/login/submitButton.scss";
+@import 'styles/login/logintitle.scss';
+@import 'styles/login/signUp.scss';
+@import 'styles/login/submitButton.scss';
 
-@import "styles/signUp/signUpButton.scss";
-@import "styles/signUp/signupForm.scss";
+@import 'styles/signUp/signUpButton.scss';
+@import 'styles/signUp/signupForm.scss';
 
-@import "styles/postpage/title.scss";
-@import "styles/postpage/submitButton.scss";
+@import 'styles/postpage/title.scss';
+@import 'styles/postpage/submitButton.scss';
