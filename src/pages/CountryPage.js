@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCountryPosts } from "../store/countrypage/actions";
+import React, { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCountryPosts } from '../store/countrypage/actions';
 import {
   selectSpecificCountryInfo,
   selectLocationPost,
-} from "../store/countrypage/selectors";
-import CountryAPIcard from "../components/CountryAPIcard";
-import { selectUser } from "../store/user/selector";
-import { FaMapMarkerAlt } from "react-icons/fa";
-import { AiFillLike } from "react-icons/ai";
+} from '../store/countrypage/selectors';
+import CountryAPIcard from '../components/CountryAPIcard';
+import { selectUser } from '../store/user/selector';
+import { FaMapMarkerAlt } from 'react-icons/fa';
+import { AiFillLike } from 'react-icons/ai';
 
 import {
   Container,
@@ -21,7 +21,7 @@ import {
   Button,
   OverlayTrigger,
   Tooltip,
-} from "react-bootstrap";
+} from 'react-bootstrap';
 
 export default function CountryPage() {
   const dispatch = useDispatch();
@@ -31,8 +31,8 @@ export default function CountryPage() {
   const userCoords = useSelector(selectUser);
   const { latitude, longitude, token } = userCoords;
 
-  const [UPDlatitude, setLatitude] = useState("");
-  const [UPDlongitude, setLongitutde] = useState("");
+  const [UPDlatitude, setLatitude] = useState('');
+  const [UPDlongitude, setLongitutde] = useState('');
   // const [orderByDistance, setOrderByDitance] = useState(true);
   const [sortCards, setSortCards] = useState(true);
 
@@ -69,10 +69,10 @@ export default function CountryPage() {
   }
 
   function SortedByLikes() {
-    setSortCards("Likes");
+    setSortCards('Likes');
   }
   function ButtonToggleSortDistance() {
-    setSortCards("Distance");
+    setSortCards('Distance');
   }
 
   function updateUserLocation(pos) {
@@ -111,11 +111,11 @@ export default function CountryPage() {
 
   //Card Sorting
   let sortingMethod = [];
-  if (sortCards === "Likes") {
+  if (sortCards === 'Likes') {
     sortingMethod = locationpost.sort(
       (b, a) => Number(a.likes) - Number(b.likes)
     );
-  } else if (sortCards === "Distance") {
+  } else if (sortCards === 'Distance') {
     sortingMethod = sortedByDistance;
   } else {
     sortingMethod = locationpost.sort((a, b) => Number(a.id) - Number(b.id));
@@ -140,7 +140,7 @@ export default function CountryPage() {
               </Button>
             ) : (
               <>
-                {["top"].map((placement) => (
+                {['top'].map((placement) => (
                   <OverlayTrigger
                     key={placement}
                     placement={placement}
@@ -196,7 +196,7 @@ export default function CountryPage() {
                     </Button>
                   </Link>
                   <Card.Text>
-                    {" "}
+                    {' '}
                     <AiFillLike /> {post.likes}
                   </Card.Text>
                 </Card.Body>
@@ -223,7 +223,7 @@ export default function CountryPage() {
 
   return (
     <>
-      <Container fluid>
+      <Container className='General-Wrapper' fluid>
         {renderSortingButtons()}
         {renderCountryPost()}
         {renderCountryInfo()}
