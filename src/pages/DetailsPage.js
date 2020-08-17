@@ -1,18 +1,19 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { FetchPost } from "../store/detailpage/actions";
-import { selectPost } from "../store/detailpage/selectors";
-import WeatherInfo from "../components/weatherInfo/WeatherInfo";
-import LeafletMap from "../components/leafletMap";
-import Mymap from "../components/leafletMap";
-import { Container, Row, Col, Image, Card, CardDeck } from "react-bootstrap";
-import { FaMapMarkerAlt } from "react-icons/fa";
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { FetchPost, incrementLike } from '../store/detailpage/actions';
+import { selectPost } from '../store/detailpage/selectors';
+import { selectUser } from '../store/user/selector';
+import WeatherInfo from '../components/weatherInfo/WeatherInfo';
+import LeafletMap from '../components/leafletMap';
+import Mymap from '../components/leafletMap';
+import { Container, Row, Col, Image, Button } from 'react-bootstrap';
+import { FaMapMarkerAlt } from 'react-icons/fa';
 
 export default function DetailsPage() {
-  const postData = useSelector(selectPost);
   const dispatch = useDispatch();
   const { postId } = useParams();
+  const postData = useSelector(selectPost);
   const {
     adress,
     imageUrl,
@@ -22,11 +23,23 @@ export default function DetailsPage() {
     description,
     userId,
   } = postData;
+  const userData = useSelector(selectUser);
+  const { id, token, email } = userData;
+
+  const likeHandler = () => {
+    console.log('CLICKED!');
+    if (!token) {
+      console.log('NO TOKEN');
+      alert('please log in to Like a post');
+    } else {
+      dispatch(incrementLike(postId));
+    }
+  };
 
   useEffect(() => {
     dispatch(FetchPost(postId));
   }, []);
-  // console.log("WHAT IS POST DATA?", postData);
+
   return (
     <Container className='detailpage-wrapper' fluid>
       <Row>
@@ -37,6 +50,7 @@ export default function DetailsPage() {
       <Row className='row-picture-and-description'>
         <Col md={8} className='details-image'>
           <Image src={imageUrl} alt='' fluid />
+          <Button onClick={likeHandler}>Like</Button>
         </Col>
         <Col md={4} className='info-col'>
           <h4 className='info-col-title'>Why this is a must visit!</h4>
@@ -47,11 +61,11 @@ export default function DetailsPage() {
       </Row>
       <hr />
       <Row>
-        <Col className='weather-border'>
+        {/* <Col className='weather-border'>
           <h2>Local Weather Conditions</h2>
 
           <WeatherInfo latitude={latitude} longitude={longitude} />
-        </Col>
+        </Col> */}
       </Row>
       <Row>
         <Col className='map-col-leaflet'>

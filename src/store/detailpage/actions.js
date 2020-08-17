@@ -1,7 +1,7 @@
-import Axios from "axios";
-import { url } from "../../config/constants";
+import Axios from 'axios';
+import { url } from '../../config/constants';
 
-export const FetchedPost = "POST_DATA_FETCH_SUCCESS";
+export const FetchedPost = 'POST_DATA_FETCH_SUCCESS';
 
 export function postFetchSuccess(data) {
   return {
@@ -17,7 +17,17 @@ export function FetchPost(postId) {
       // console.log("correct data?", res.data);
       dispatch(postFetchSuccess(res.data));
     } catch (e) {
-      console.log("ERROR MESSAGE", e);
+      console.log('ERROR MESSAGE', e);
     }
   };
 }
+
+export const incrementLike = (postId) => {
+  return async (dispatch, getState) => {
+    try {
+      const res = await Axios.P;
+    } catch (e) {
+      console.log('ERROR message', e.message);
+    }
+  };
+};

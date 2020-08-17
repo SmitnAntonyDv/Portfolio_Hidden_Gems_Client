@@ -72,7 +72,7 @@ export function GotUserLocation(data) {
 
 export function getAdress(latitude, longitude) {
   return async function thunk(dispatch, getState) {
-    console.log('I AM BEING RENDERED! ');
+    console.log('I AM BEING RENDERED! in filename');
     try {
       const res = await axios.get(
         `${geocodeAPI}q=${latitude}+${longitude}&key=${geoS}`
