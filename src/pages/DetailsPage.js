@@ -50,7 +50,9 @@ export default function DetailsPage() {
       <Row className='row-picture-and-description'>
         <Col md={8} className='details-image'>
           <Image src={imageUrl} alt='' fluid />
-          <Button onClick={likeHandler}>Like</Button>
+          <Button className='toggleTrack' onClick={likeHandler}>
+            Like
+          </Button>
         </Col>
         <Col md={4} className='info-col'>
           <h4 className='info-col-title'>Why this is a must visit!</h4>
@@ -61,11 +63,11 @@ export default function DetailsPage() {
       </Row>
       <hr />
       <Row>
-        {/* <Col className='weather-border'>
+        <Col className='weather-border'>
           <h2>Local Weather Conditions</h2>
 
           <WeatherInfo latitude={latitude} longitude={longitude} />
-        </Col> */}
+        </Col>
       </Row>
       <Row>
         <Col className='map-col-leaflet'>
