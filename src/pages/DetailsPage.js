@@ -22,6 +22,7 @@ export default function DetailsPage() {
     title,
     description,
     userId,
+    likes,
   } = postData;
   const userData = useSelector(selectUser);
   const { id, token, email } = userData;
@@ -32,14 +33,13 @@ export default function DetailsPage() {
       console.log('NO TOKEN');
       alert('please log in to Like a post');
     } else {
-      dispatch(incrementLike(postId));
+      dispatch(incrementLike(postId, likes, token));
     }
   };
 
   useEffect(() => {
     dispatch(FetchPost(postId));
   }, []);
-
   return (
     <Container className='detailpage-wrapper' fluid>
       <Row>

@@ -22,10 +22,19 @@ export function FetchPost(postId) {
   };
 }
 
-export const incrementLike = (postId) => {
+export const incrementLike = (postId, likes, token) => {
   return async (dispatch, getState) => {
+    console.log('what is my data', postId, likes, token);
     try {
-      const res = await Axios.P;
+      const res = await Axios.patch(
+        `${url}/locationposts/${postId}`,
+        {
+          likes: likes + 1,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
     } catch (e) {
       console.log('ERROR message', e.message);
     }
